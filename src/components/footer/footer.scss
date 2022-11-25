@@ -1,0 +1,105 @@
+.footer {
+
+    &__row-1 {
+        display: grid;
+        grid-template-columns: 25.4rem 1fr;
+        gap: 6rem;
+
+        @media (max-width: $md1+px) {
+            grid-template-columns: 16.4rem 1fr;
+        }
+
+        @media (max-width: $md2+px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__row-2 {
+    }
+
+    &__contact {
+    }
+
+    &__logo {
+    }
+
+    &__text {
+    }
+
+    &__contact-list {
+    }
+
+    &__nav {
+        @media (max-width: $md3+px) {
+            position: relative;
+
+            &:before {
+                position: absolute;
+                content: '';
+                top: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #000;
+            }
+        }
+        & > li {
+            @media (max-width: $md3+px) {
+                position: relative;
+                padding: 1.8rem 0;
+                &:before {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #000;
+                }
+            }
+        }
+    }
+
+    &__nav-link {
+        @media (max-width: $md3+px) {
+            position: relative;
+            padding-right: 3rem;
+
+            &:before {
+                font-family: 'icomoon' !important;
+                position: absolute;
+                content: "\e903";
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                font-size: 1em;
+                transition: all .3s ease;
+            }
+
+            &.active {
+                &:before {
+                    transform: translateY(-50%) scale(1, -1);
+                }
+            }
+        }
+    }
+
+    &__sub-menu {
+    }
+
+    &__sub-menu-link {
+    }
+
+    &__copy {
+    }
+
+    & a {
+        @apply transition;
+
+        @media (min-width: 992px) {
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+}

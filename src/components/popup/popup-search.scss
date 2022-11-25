@@ -1,0 +1,51 @@
+.popup-serch {
+    margin: 0 auto;
+    max-width: 80rem;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $md4+px) {
+        display: block;
+    }
+
+    &__input {
+        display: flex;
+        align-items: center;
+        flex: 1 1 auto;
+        margin-right: 20px;
+        outline: none;
+        border: none;
+        padding: 20px;
+        font-size: 18px;
+        border-radius: 12px;
+        width: 100%;
+
+        @media (max-width: $md4+px) {
+            margin-right: 0;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+    }
+
+    &__submit {
+        flex: 0 0 auto;
+        padding: 20px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        border-radius: 12px;
+        min-width: 150px;
+        transition: all .3s ease;
+
+        @media (max-width: $md4+px) {
+            width: 100%;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

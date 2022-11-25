@@ -1,0 +1,44 @@
+.btn-default {
+    display: inline-flex;
+    min-height: 5.3rem;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    gap: 0.7rem;
+    font-size: 1.7rem;
+    line-height: 2.1rem;
+    color: $textColorLight;
+    background-color: $themeColorThird;
+    border-radius: 0.4rem;
+    text-align: center;
+    justify-content: center;
+
+    @apply transition hover:opacity-80; 
+
+    & span {
+        flex: 0 0 auto;
+        height: 2rem;
+        min-width: 2rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.3rem;
+        font-size: 0.9rem;
+        line-height: 1.1rem;
+        background-color: $themeColor;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &--second {
+        background-color: $themeColor;
+
+        & span {
+            background-color: $themeColorThird;
+        }
+    }
+
+    &--third {
+        background-color: $themeColorSecond;
+    }
+}

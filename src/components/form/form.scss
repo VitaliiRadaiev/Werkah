@@ -1,0 +1,62 @@
+.form {
+
+    &__fields {
+    }
+
+    &__field {
+    }
+
+    &__label {
+    }
+
+    &__bottom {
+    }
+
+    &__submit {
+    }
+}
+
+.input {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem 2.5rem;
+    font-weight: bold;
+    color: $themeColorThird;
+    height: 6.2rem;
+
+    &::placeholder {
+        color: rgba($themeColorThird, 0.47);
+    }
+
+    &:focus-visible {
+        outline-color: rgba(#00A1E2, 0.14);
+        outline-offset: 0.2rem;
+        outline-width: 0.2rem;
+    }
+
+}
+.textarea {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem 2.5rem;
+    font-weight: bold;
+    color: $themeColorThird;
+    height: 14.3rem;
+    resize: none;
+
+    &::placeholder {
+        color: rgba($themeColorThird, 0.47);
+    }
+
+    &:focus-visible {
+        outline-color: rgba(#00A1E2, 0.14);
+        outline-offset: 0.2rem;
+        outline-width: 0.2rem;
+    }
+}

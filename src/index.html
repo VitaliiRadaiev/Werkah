@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include('_head.html')
+<body>
+    @@include('components/header/_header.html')
+
+    <main class="_page">
+        <div class="pt-[8rem]"></div>
+        <section class="promo-header relative pb-[100%] h-0 md:pb-[60.58%] lg:pb-[49.58%]">
+            <div class="promo-header__bg absolute z-1 top-0 left-0 w-full h-full overflow-hidden">
+                <div class="promo-header__bg-decor absolute z-2 left-[50%] translate-x-[-50%] w-full h-full lg:w-[65.27%] lg:left-0 lg:translate-x-0">
+                    <img class="w-auto h-full max-w-none object-bottom object-cover md:w-full" src="img/promo-header-decor.png" alt="">
+                </div>
+                <div class="promo-header__bg-img hidden absolute top-0 right-0 z-1 w-1/2  lg:block">
+                    <img class="w-full h-full object-cover" src="img/promo-header-bg.jpg" alt="">
+                </div>
+            </div>
+            <div class="promo-header__body-wrap absolute top-0 left-0 z-2 h-full w-full">
+                <div class="promo-header__body container pt-[4rem] text-white flex flex-col justify-center min-h-full pb-[28%] md:pb-[20%] lg:pb-[16%] ">
+                    <h1 class="promo-header__title title-1 mb-[4rem] md:max-w-[51.4rem]">Solliciteer nu bij een filiaal bij jou in de buurt</h1>
+                    <div class="promo-header__bottom md:max-w-[51.4rem]">
+                        <div class="promo-header__label text-sm mb-[1rem]">Selecteer een plaats</div>
+                        <div class="promo-header__select mb-[1.7rem]">
+                            <div class="select-wrap">
+                                <select name="" class="_select">
+                                    <option value="1" selected>Bijvoorbeeld Amsterdam</option>
+                                    <option value="2">Bijvoorbeeld Amsterdam 1</option>
+                                    <option value="3">Bijvoorbeeld Amsterdam 2</option>
+                                    <option value="4">Bijvoorbeeld Amsterdam 3</option>
+                                    <option value="5">Bijvoorbeeld Amsterdam 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-header__btn btn-default">Bekijk vacatures</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="services py-[8rem]">
+            <div class="container">
+                <div class="section-head flex items-center justify-between gap-[3rem] flex-wrap mb-[3rem]">
+                    <h2 class="section-head__title title-2 text-themeColor">Kom je werken bij onze Albert Heijn?</h2>
+                    <a href="#" class="section-head__btn btn-default">Bekijk alle vacatures</a>
+                </div>
+                <ul class="list-default grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[4rem] gap-y-[3rem]">
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Kassamedewerker",
+                            "img": "img/card-img-1.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Vroege Vogels",
+                            "img": "img/card-img-2.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Servicedesk Medewerker",
+                            "img": "img/card-img-3.jpg"
+                        })
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        @@include('components/advantages/_advantages.html')
+
+        <section class="places py-[8rem]">
+            <div class="container">
+                <div class="section-head flex items-center justify-between gap-[3rem] flex-wrap mb-[3rem]">
+                    <h2 class="section-head__title title-2 text-themeColor">We zitten dichterbij dan je denkt</h2>
+                    <a href="#" class="section-head__btn btn-default">Alle filialen</a>
+                </div>
+                <ul class="places__list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2.5rem]">
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta relative ">
+            <div class="cta__bg bg-themeColor absolute top-0 left-0 w-full h-full z-1">
+                <div class="cta__img ibg hidden md:block w-[76.5rem] h-[58.2rem]">
+                    <img src="img/bg.jpg" alt="">
+                </div>
+            </div>
+            <div class="cta__body container relative z-2 pb-[8rem] pt-[8rem] md:pt-[13.5rem] min-h-[65.8rem] text-white flex justify-between flex-col gap-[4rem] md:flex-row">
+                <h2 class="cta__title title-2 text-center md:max-w-[44.6rem]">Vragen? Vul het formulier <br> in en wij nemen zo snel mogelijk contact met je op.</h2>
+                <div class="cta__form md:max-w-[48rem]">
+                    <form action="/">
+                        <div class="form flex flex-col gap-[2rem]">
+                            <div class="form__fields flex flex-wrap gap-[2rem]">
+                                <div class="form__field basis-full">
+                                    <label class="form__label block mb-[0.4rem] md:mb-[0.4rem]">Volledige naam</label>
+                                    <input type="text" class="input" placeholder="Enter">
+                                </div>
+                                <div class="form__field basis-full">
+                                    <label class="form__label  block mb-[0.4rem] md:mb-[0.4rem]">E-mailadres</label>
+                                    <input type="email" class="input" placeholder="Enter">
+                                </div>
+                                <div class="form__field basis-full">
+                                    <label class="form__label  block mb-[0.4rem] md:mb-[0.4rem]">vraag</label>
+                                    <textarea placeholder="Stel hier je vraag" class="textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="form__bottom md:text-right">
+                                <button class="form__submit btn-default">Neem contact op</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    @@include('components/footer/_footer.html')
+</body>  
+</html>
