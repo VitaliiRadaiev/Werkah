@@ -1,0 +1,72 @@
+.vacancies {
+
+    &__head {
+    }
+
+    &__filter-btn {
+    }
+
+    &__body {
+    }
+
+    &__side {
+    }
+
+    &__content {
+    }
+
+    &__list {
+    }
+
+    &__bottom {
+    }
+
+    &__bottom-label {
+    }
+}
+
+.vacancy {
+
+    &__img {
+    }
+
+    &__body {
+    }
+
+    &__title {
+    }
+
+    &__list {
+    }
+
+    &__list-icon {
+    }
+
+    &__bottom {
+    }
+
+    &__options {
+    }
+
+    &__options-label {
+    }
+
+    &__options-buttons {
+    }
+
+    &__options-btn {
+        & input {
+            &:checked ~ .vacancy__options-btn-text {
+                background-color: $themeColor;
+                color: #fff;
+                border-radius: 0.4rem;
+            }
+        }
+    }
+
+    &__options-btn-text {
+    }
+
+    &__link {
+    }
+}

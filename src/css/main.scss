@@ -16,9 +16,13 @@
 @import "../components/card/card.scss";
 @import "../components/advantages/advantages.scss";
 @import "../components/form/form.scss";
+@import "../components/hero-filter/hero-filter.scss";
+@import "../components/multiple-select/multiple-select.scss";
+@import "../components/filter/filter.scss";
 // // ==== components =========
 
 
 // ==== pages =========
-@import "../pages/home.scss";  
+@import "pages/home.scss";  
+@import "pages/vacancy.scss";  
 // // ==== pages =========

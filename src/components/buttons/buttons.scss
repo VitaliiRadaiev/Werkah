@@ -12,7 +12,7 @@
     text-align: center;
     justify-content: center;
 
-    @apply transition hover:opacity-80; 
+    @apply transition hover:opacity-80;
 
     & span {
         flex: 0 0 auto;
@@ -40,5 +40,46 @@
 
     &--third {
         background-color: $themeColorSecond;
+    }
+}
+
+.selected-filter-btn {
+    background: rgba(128, 134, 149, 0.1);
+    border: 1px solid rgba(151, 151, 151, 0.2);
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    border-radius: 0.5rem;
+    padding: 0.3rem 1rem 0.3rem 0.6rem;
+    color: $textColorDarkSecond;
+    font-size: 1.7rem;
+    line-height: 1.2em;
+    gap: 0.1em;
+    cursor: auto;
+
+
+
+    &__close {
+        flex: 0 0 auto;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        &:before {
+            font-family: 'icomoon' !important;
+            content: "\e900";
+            transition: all .3s ease;
+        }
+
+        @media (min-width: 992px) {
+            &:hover {
+                &:before {
+                    color: red;
+                }
+            }
+        }
     }
 }

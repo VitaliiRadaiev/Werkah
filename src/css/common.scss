@@ -100,7 +100,6 @@ h6,
 }
 
 .text {
-	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1.38em;
 }
@@ -116,8 +115,6 @@ h6,
 
 
 .ibg {
-	position: relative;
-
 	& img {
 		position: absolute;
 		top: 0;
@@ -152,5 +149,23 @@ h6,
 	& img, svg {
 		width: 2.4rem;
 		height: auto;
+	}
+}
+
+[data-tooltip] {
+	padding-right: 1.6rem;
+	position: relative;
+	
+	& .tooltip-icon {
+		position: absolute;
+		width: 1.1rem;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+
+		& svg {
+			width: 100%;
+			height: auto;
+		}
 	}
 }

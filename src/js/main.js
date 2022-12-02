@@ -27,11 +27,13 @@ class App {
 			this.dynamicAdapt.init();
 			this.headerHandler();
 			this.popupHandler();
+			this.slidersInit();
 			this.initSmoothScroll();
 			this.inputMaskInit();
 			this.tabsInit();
 			this.selectInit();
 			this.spollerInit();
+			this.initTooltipe();
 			this.componentsBeforeLoad();
 		});
 		
@@ -39,10 +41,7 @@ class App {
 
 		window.addEventListener('load', () => {
 			
-			//this.setPaddingTopHeaderSize();
-			this.slidersInit();
 			this.componentsAfterLoad();
-			//this.setFontSize();
 		});
 
 	}
@@ -252,13 +251,36 @@ class App {
 		}
 	}
 
+	initTooltipe() {
+		let tooltips = document.querySelectorAll('[data-tooltip]');
+		if (tooltips.length) {
+			tooltips.forEach(tooltip => {
+				let icon = document.createElement('span');
+				icon.className = 'tooltip-icon';
+				icon.innerHTML = `
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M7 0C10.8598 0 14 3.14024 14 7.00004C14 10.8598 10.8598 14 7 14C3.1402 14 0 10.8598 0 7.00004C0 3.14024 3.1402 0 7 0ZM7 5.93939C6.64856 5.93939 6.36364 6.22432 6.36364 6.57576V10.3939C6.36364 10.7454 6.64856 11.0303 7 11.0303C7.35144 11.0303 7.63636 10.7454 7.63636 10.3939V6.57576C7.63636 6.22432 7.35144 5.93939 7 5.93939ZM6.1516 3.81856C6.1516 3.3505 6.53215 2.9697 6.99992 2.9697C7.46768 2.9697 7.84823 3.3505 7.84823 3.81856C7.84823 4.28621 7.46768 4.66667 6.99992 4.66667C6.53215 4.66667 6.1516 4.28621 6.1516 3.81856Z" fill="#00A1E2"/>
+				</svg>`;
+
+				tooltip.append(icon);
+
+				tippy(icon, {
+					content: tooltip.dataset.tooltip,
+					arrow: false,
+				});
+			})
+		}
+	}
+
 
 	componentsBeforeLoad() {
-
+		@@include('../components/multiple-select/multiple-select.js');
+		@@include('../components/hero-filter/hero-filter.js');
+		@@include('../components/footer/footer.js');
+		@@include('../components/filter/filter.js');
 	}
 
 	componentsAfterLoad() {
-		@@include('../components/footer/footer.js');
 	}
 
 }

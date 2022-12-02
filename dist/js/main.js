@@ -374,11 +374,13 @@ class App {
 			this.dynamicAdapt.init();
 			this.headerHandler();
 			this.popupHandler();
+			this.slidersInit();
 			this.initSmoothScroll();
 			this.inputMaskInit();
 			this.tabsInit();
 			this.selectInit();
 			this.spollerInit();
+			this.initTooltipe();
 			this.componentsBeforeLoad();
 		});
 		
@@ -386,10 +388,7 @@ class App {
 
 		window.addEventListener('load', () => {
 			
-			//this.setPaddingTopHeaderSize();
-			this.slidersInit();
 			this.componentsAfterLoad();
-			//this.setFontSize();
 		});
 
 	}
@@ -1041,12 +1040,207 @@ window.popup = {
 		}
 	}
 
+	initTooltipe() {
+		let tooltips = document.querySelectorAll('[data-tooltip]');
+		if (tooltips.length) {
+			tooltips.forEach(tooltip => {
+				let icon = document.createElement('span');
+				icon.className = 'tooltip-icon';
+				icon.innerHTML = `
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M7 0C10.8598 0 14 3.14024 14 7.00004C14 10.8598 10.8598 14 7 14C3.1402 14 0 10.8598 0 7.00004C0 3.14024 3.1402 0 7 0ZM7 5.93939C6.64856 5.93939 6.36364 6.22432 6.36364 6.57576V10.3939C6.36364 10.7454 6.64856 11.0303 7 11.0303C7.35144 11.0303 7.63636 10.7454 7.63636 10.3939V6.57576C7.63636 6.22432 7.35144 5.93939 7 5.93939ZM6.1516 3.81856C6.1516 3.3505 6.53215 2.9697 6.99992 2.9697C7.46768 2.9697 7.84823 3.3505 7.84823 3.81856C7.84823 4.28621 7.46768 4.66667 6.99992 4.66667C6.53215 4.66667 6.1516 4.28621 6.1516 3.81856Z" fill="#00A1E2"/>
+				</svg>`;
 
-	componentsBeforeLoad() {
+				tooltip.append(icon);
 
+				tippy(icon, {
+					content: tooltip.dataset.tooltip,
+					arrow: false,
+				});
+			})
+		}
 	}
 
-	componentsAfterLoad() {
+
+	componentsBeforeLoad() {
+		class MultipleSelect extends Utils {
+    constructor(container, id = 0, options = null) {
+        super()
+        this.container = container;
+        this.head = this.container.querySelector('.multiple-select__head');
+        this.optionsContainer = this.container.querySelectorAll('.multiple-select__options');
+        this.inputs = Array.from(this.container.querySelectorAll('.multiple-select__options input'));
+        this.allMultipleSelectsOnPage = document.querySelectorAll('[data-multiple-select]');
+        this.id = id;
+        this.options = options;
+        this.placeholder = this.head.innerText;
+
+        if (!container) return console.log('MultipleSelect error');
+
+        this.init();
+    }
+
+    init() {
+        this.container.setAttribute('data-multiple-select-id', this.id);
+
+        // == toggle dropdonw ==
+        this.head.addEventListener('click', (e) => {
+            if (e.target.closest('.selected-filter-btn')) return;
+
+            if (this.container.classList.contains('multiple-select--open')) {
+                this.close();
+            } else {
+                this.open();
+            }
+        })
+
+        document.addEventListener('click', (e) => {
+            let closeBtnInMultipleSelect = false;
+            if (e.target.closest('.selected-filter-btn__close')) {
+                closeBtnInMultipleSelect = e.target.closest('.multiple-select');
+
+                let parent = e.target.parentElement;
+                if (parent.getAttribute('data-multiple-select-id') == this.id) {
+                    this.removeSelectedButtons(parent.getAttribute('data-multiple-select-id'), parent.getAttribute('data-multiple-btn-id'));
+                    this.unCheckInput(parent.getAttribute('data-multiple-btn-id'));
+                }
+            }
+
+            if (e.target.closest('.multiple-select') || closeBtnInMultipleSelect) {
+                if(e.target.closest('.multiple-select') === this.container) {
+                    return;
+                }
+            }
+            this.close();
+        })
+        // == toggle dropdonw ==
+
+        // == multiple handler ==
+        if (this.inputs) {
+            this.inputs.forEach((input, index) => {
+                input.setAttribute('data-multiple-select-id', this.id);
+                input.setAttribute('data-multiple-select-input-id', index);
+
+                input.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        this.addSelectedButtons(this.id, index, input.value);
+                    } else {
+                        this.removeSelectedButtons(this.id, index);
+                    }
+                })
+            })
+        }
+
+        if (this.options.clearAllBtn) {
+            this.options.clearAllBtn.setAttribute('style', "display:none;");
+
+            this.options.clearAllBtn.addEventListener('click', () => this.clearAll());
+
+            if (this.options.duplicateSelectedButtons) {
+                let observer = new MutationObserver(mutationRecords => {
+                    if(this.options.duplicateSelectedButtons.children.length) {
+                        this.options.clearAllBtn.removeAttribute('style');
+                    } else {
+                        this.options.clearAllBtn.setAttribute('style', "display:none;");
+                    }
+                });
+
+                observer.observe(this.options.duplicateSelectedButtons, {
+                    childList: true,
+                });
+            }
+
+        }
+        // // == multiple handler ==
+    }
+
+    open() {
+        let optionsContainer = this.container.querySelector('.multiple-select__options');
+        this.container.classList.add('multiple-select--open');
+        this.slideDown(optionsContainer, 100);
+
+        // if(this.allMultipleSelectsOnPage.length) {
+        //     this.allMultipleSelectsOnPage.forEach(multipleSelect => {
+        //         if(multipleSelect === this.container) return;
+
+        //     })
+        // }
+    }
+
+    close() {
+        let optionsContainer = this.container.querySelector('.multiple-select__options');
+        this.container.classList.remove('multiple-select--open');
+        this.slideUp(optionsContainer, 100)
+    }
+
+    addSelectedButtons(selectId, btnId, btnText) {
+        if (!this.head.children.length) this.head.innerHTML = '';
+
+        const addButton = (container) => {
+            container.insertAdjacentHTML('beforeend', `
+            <button class="selected-filter-btn" data-multiple-select-id="${selectId}" data-multiple-btn-id="${btnId}">
+                <span class="selected-filter-btn__close"></span>
+                ${btnText}
+            </button>
+            `)
+        }
+
+        addButton(this.head);
+
+        if (this.options.duplicateSelectedButtons) {
+            addButton(this.options.duplicateSelectedButtons);
+        }
+    }
+
+    removeSelectedButtons(selectId, btnId) {
+        let buttons = document.querySelectorAll(`.selected-filter-btn[data-multiple-select-id="${selectId}"][data-multiple-btn-id="${btnId}"]`);
+        if (buttons.length) {
+            buttons.forEach(btn => {
+                btn.remove();
+            })
+        }
+
+        if (!this.head.children.length) this.head.innerHTML = this.placeholder;
+    }
+
+    clearAll() {
+        this.head.innerText = this.placeholder;
+        this.inputs.forEach(input => {
+            input.checked = false;
+        })
+
+        if (this.options.duplicateSelectedButtons) {
+            let buttons = document.querySelectorAll(`.selected-filter-btn[data-multiple-select-id="${this.id}"]`);
+            if (buttons.length) {
+                buttons.forEach(btn => {
+                    btn.remove();
+                })
+            }
+        }
+    }
+
+    unCheckInput(inputId) {
+        this.inputs.forEach(input => {
+            if (input.getAttribute('data-multiple-select-input-id') === inputId) {
+                input.checked = false;
+            }
+        })
+    }
+};
+		{
+    let multipleSelects = document.querySelectorAll('[data-multiple-select]');
+    if(multipleSelects.length) {
+        let btnClearSelectedFilters = document.querySelector('[data-clear-selected-filters]');
+        multipleSelects.forEach((select, index) => {
+            let selectedFilterList = document.querySelector('.hero-filter__selected-filters-list');
+
+            let multipleSelect = new MultipleSelect(select, index, {
+                duplicateSelectedButtons: selectedFilterList,
+                clearAllBtn: btnClearSelectedFilters,
+            })
+        })
+    }
+};
 		{
     let footer = document.querySelector('[data-footer]');
     if(footer) {
@@ -1078,6 +1272,62 @@ window.popup = {
         }
     }
 };
+		{
+    let filterContainer = document.querySelector('[data-filter]');
+    if(filterContainer) {
+        let rows = filterContainer.querySelectorAll('.filter__row');
+        if(rows.length) {
+            rows.forEach(row => {
+                let listHideItems = row.querySelectorAll('.filter__list li.hidden');
+                let btnMore = row.querySelector('.filter__btn-more');
+
+                if(listHideItems.length) {
+                    if(btnMore) {
+                        btnMore.classList.remove('hidden');
+
+                        btnMore.addEventListener('click', () => {
+                            if(row.classList.contains('show-all-items')) {
+                                listHideItems.forEach(i => {
+                                    i.classList.add('hidden');
+                                })
+                                btnMore.classList.remove('filter__btn-more--open');
+                                row.classList.remove('show-all-items');
+                            } else {
+                                listHideItems.forEach(i => {
+                                    i.classList.remove('hidden');
+                                })
+                                btnMore.classList.add('filter__btn-more--open');
+                                row.classList.add('show-all-items');
+                            }
+                        })
+                    }
+                }
+            })
+        }
+
+        let buttonsOpenFilter = document.querySelectorAll('[data-action="open-filter"]');
+        if(buttonsOpenFilter.length) {
+            buttonsOpenFilter.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.classList.add('filter--open');
+                    document.body.classList.add('overflow-hidden');
+                })
+            })
+        }
+        let buttonsCloseFilter = document.querySelectorAll('[data-action="close-filter"]');
+        if(buttonsCloseFilter.length) {
+            buttonsCloseFilter.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.classList.remove('filter--open');
+                    document.body.classList.remove('overflow-hidden');
+                })
+            })
+        }
+    }
+};
+	}
+
+	componentsAfterLoad() {
 	}
 
 }

@@ -60,3 +60,26 @@
         outline-width: 0.2rem;
     }
 }
+
+.checkbox-radio {
+    & input {
+        &:checked ~ .checkbox-radio__square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $themeColor;
+            border-color: $themeColor;
+            
+            &:before {
+                font-family: 'icomoon' !important;
+                content: "\e90b";
+                font-size: 0.9rem;
+            }
+        }
+    }
+    &__square {
+    }
+
+    &__text {
+    }
+}

@@ -39,6 +39,7 @@ module.exports = {
         '9': '9',
         '10': '10',
         '51': '51',
+        '52': '52',
       },
       colors: {
         textColorDark: '#000',
