@@ -280,6 +280,8 @@ class App {
 		@@include('../components/filter/filter.js')
 		@@include('../components/vacancy-single-hero/vacancy-single-hero.js')
 		@@include('../components/loading-box/loading-box.js')
+		@@include('../components/hero-second/hero-second.js')
+		@@include('../components/text-section/text-section.js')
 	}
 
 	componentsAfterLoad() {

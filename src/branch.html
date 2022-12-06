@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('_head.html')
+
+<body>
+    @@include('components/header/_header.html')
+
+    <main class="_page">
+        <div class="pt-[8rem]"></div>
+        @@include('components/hero/_hero.html', {
+            "breadcrumbs": ['<a href="#">Home</a>', 'Alle functies'],
+            "title": "Onze filialen",
+            "text": "BUN heeft meer dan twintig Albert Heijn filialen verspreid door het hele land. De kans is dus groot dat er een filiaal bij jou in de buurt is! Bekijk hieronder al onze filialen."
+        })
+        <div class="pt-[6rem]"></div>
+        <section class="branch">
+            <div class="container">
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2.5rem]">
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="pt-[8rem]"></div>
+        @@include('components/advantages/_advantages.html')
+    </main>
+
+    @@include('components/footer/_footer.html', {
+        "mode": ""
+    })
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('_head.html')
+
+<body>
+    @@include('components/header/_header.html')
+
+    <main class="_page">
+        <div class="pt-[8rem]"></div>
+        @@include('components/hero-second/_hero-second.html', {
+            "mode": "",
+            "img": "img/hero-second-img-1.jpg",
+            "breadcrumbs": ['<a href="#">Home</a>', '<a href="#">Onze filialen</a>', 'Amsterdam'],
+            "title": "Amsterdam",
+            "text": "Verspreid over Amsterdam zijn vijf Albert Heijn filialen van BUN gevestigd. Bekijk hieronder onze filialen in Amsterdam."
+        })
+
+        <div class="pt-[8rem]"></div>
+        <section class="branch-single">
+            <div class="container">
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2.5rem]">
+                    <li>
+                        @@include('components/card/_card-third.html', {
+                            "mode": "",
+                            "head": "Stadionplein",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-third.html', {
+                            "mode": "",
+                            "head": "Haarlemmerplein",
+                            "img": "img/card-img-5.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-third.html', {
+                            "mode": "",
+                            "head": "Waterlandplein",
+                            "img": "img/card-img-6.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-third.html', {
+                            "mode": "",
+                            "head": "Pieter Calandlaan",
+                            "img": "img/card-img-7.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-third.html', {
+                            "mode": "",
+                            "head": "Frederik Hendrikstraat",
+                            "img": "img/card-img-8.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-third.html', {
+                            "mode": "",
+                            "head": "Parnassusweg",
+                            "img": "img/card-img-9.jpg"
+                        })
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="pt-[8rem]"></div>
+
+        <section class="view-vacancies bg-white py-[8rem]">
+            <div class="view-vacancies__body container-forth">
+                <h2 class="view-vacancies__title title-2 text-center text-themeColor mb-[4.5rem]">
+                    Bekijk vacatures in Amsterdam
+                </h2>
+                <ul class="view-vacancies__list flex flex-col gap-[2rem] mb-[6.5rem]">
+                    <li>
+                        <div class="vacancy bg-white md:flex rounded-[0.5rem] overflow-hidden">
+                            <div class="vacancy__img ibg relative pb-[90%] md:basis-[24.4rem] md:min-h-[24rem] md:pb-0 shrink-0 grow-0">
+                                <img src="img/vacancy-img-1.jpg" alt="">
+                            </div>
+                            <div class="vacancy__body shrink grow pl-[2rem] md:pl-[5.6rem] py-[2rem] pr-[2rem]">
+                                <h2 class="vacancy__title text-[1.9rem] leading-[2.3rem] mb-[1rem]">Verkoopmedewerker</h2>
+                                <ul class="vacancy__list md:columns-2 gap-[1rem] md:max-w-[50rem] text text-textColorDarkSecond mb-[2rem] md:mb-[1rem]">
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Veel klantencontact
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Specialist op vakgebied
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Opleidingsmogelijkheden
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/marker.svg" alt="">
+                                        </div>
+                                        Almere, Europakwartier
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/time.svg" alt="">
+                                        </div>
+                                        Parttime
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/bag.svg" alt="">
+                                        </div>
+                                        Alle opleidingen
+                                    </li>
+                                </ul>
+                                <div class="vacancy__bottom flex flex-col gap-[2rem] md:justify-between md:flex-row">
+                                    <div class="vacancy__options">
+                                        <div class="vacancy__options-label text font-bold mb-[0.5rem]">Of kies je filiaal </div>
+                                        <div class="vacancy__options-buttons flex flex-wrap gap-[0.6rem]">
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Noord
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Oost
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Zuid 
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    West
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="vacancy__link btn-default btn-default--third">Bekijk vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vacancy bg-white md:flex rounded-[0.5rem] overflow-hidden">
+                            <div class="vacancy__img ibg relative pb-[90%] md:basis-[24.4rem] md:min-h-[24rem] md:pb-0 shrink-0 grow-0">
+                                <img src="img/vacancy-img-2.jpg" alt="">
+                            </div>
+                            <div class="vacancy__body shrink grow pl-[2rem] md:pl-[5.6rem] py-[2rem] pr-[2rem]">
+                                <h2 class="vacancy__title text-[1.9rem] leading-[2.3rem] mb-[1rem]">Verkoopmedewerker</h2>
+                                <ul class="vacancy__list md:columns-2 gap-[1rem] md:max-w-[50rem] text text-textColorDarkSecond mb-[2rem] md:mb-[1rem]">
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Veel klantencontact
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Specialist op vakgebied
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Opleidingsmogelijkheden
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/marker.svg" alt="">
+                                        </div>
+                                        Almere, Europakwartier
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/time.svg" alt="">
+                                        </div>
+                                        Parttime
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/bag.svg" alt="">
+                                        </div>
+                                        Alle opleidingen
+                                    </li>
+                                </ul>
+                                <div class="vacancy__bottom flex flex-col gap-[2rem] md:justify-between md:flex-row">
+                                    <div class="vacancy__options">
+                                        <div class="vacancy__options-label text font-bold mb-[0.5rem]">Of kies je filiaal </div>
+                                        <div class="vacancy__options-buttons flex flex-wrap gap-[0.6rem]">
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Noord
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Oost
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Zuid 
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    West
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="vacancy__link btn-default btn-default--third">Bekijk vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vacancy bg-white md:flex rounded-[0.5rem] overflow-hidden">
+                            <div class="vacancy__img ibg relative pb-[90%] md:basis-[24.4rem] md:min-h-[24rem] md:pb-0 shrink-0 grow-0">
+                                <img src="img/vacancy-img-2.jpg" alt="">
+                            </div>
+                            <div class="vacancy__body shrink grow pl-[2rem] md:pl-[5.6rem] py-[2rem] pr-[2rem]">
+                                <h2 class="vacancy__title text-[1.9rem] leading-[2.3rem] mb-[1rem]">Verkoopmedewerker</h2>
+                                <ul class="vacancy__list md:columns-2 gap-[1rem] md:max-w-[50rem] text text-textColorDarkSecond mb-[2rem] md:mb-[1rem]">
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Veel klantencontact
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Specialist op vakgebied
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Opleidingsmogelijkheden
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/marker.svg" alt="">
+                                        </div>
+                                        Almere, Europakwartier
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/time.svg" alt="">
+                                        </div>
+                                        Parttime
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/bag.svg" alt="">
+                                        </div>
+                                        Alle opleidingen
+                                    </li>
+                                </ul>
+                                <div class="vacancy__bottom flex flex-col gap-[2rem] md:justify-between md:flex-row">
+                                    <div class="vacancy__options">
+                                        <div class="vacancy__options-label text font-bold mb-[0.5rem]">Of kies je filiaal </div>
+                                        <div class="vacancy__options-buttons flex flex-wrap gap-[0.6rem]">
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Noord
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Oost
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Zuid 
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    West
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="vacancy__link btn-default btn-default--third">Bekijk vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="view-vacancies__bottom text-center">
+                    <a href="#" class="btn-default">Toon meer</a>
+                </div>
+            </div>
+        </section>
+
+        @@include('components/advantages/_advantages.html')
+
+        <section class="places py-[8rem]">
+            <div class="container">
+                <div class="section-head flex items-center justify-between gap-[3rem] flex-wrap mb-[3rem]">
+                    <h2 class="section-head__title title-2 text-themeColor">Bekijk ook andere filialen </h2>
+                    <a href="#" class="section-head__btn btn-default">Alle filialen</a>
+                </div>
+                <ul class="places__list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2.5rem]">
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card-second.html', {
+                            "mode": "",
+                            "head": "Almere",
+                            "img": "img/card-img-4.jpg"
+                        })
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    @@include('components/footer/_footer.html', {
+        "mode": "bg-white"
+    })
+</body>
+
+</html>

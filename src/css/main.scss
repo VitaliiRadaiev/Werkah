@@ -28,6 +28,10 @@
 @import "../components/text-content/text-content.scss";
 @import "../components/loading-box/loading-box.scss";
 @import "../components/testimonials/testimonials.scss";
+@import "../components/hero/hero.scss";
+@import "../components/breadcrumbs/breadcrumbs.scss";
+@import "../components/hero-second/hero-second.scss";
+@import "../components/text-section/text-section.scss";
 // // ==== components =========
 
 
@@ -35,4 +39,6 @@
 @import "pages/home.scss";  
 @import "pages/vacancy.scss";  
 @import "pages/vacancy-single.scss";  
+@import "pages/branch.scss";  
+@import "pages/branch-single.scss";  
 // // ==== pages =========

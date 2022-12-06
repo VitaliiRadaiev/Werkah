@@ -1,0 +1,23 @@
+.breadcrumbs {
+
+    & > li {
+        &:not(:last-child) {
+            &:after {
+                content: '>';
+                margin-left: 0.5rem;
+                margin-right: 0.2rem;
+            }
+        }
+    }
+
+    & a {
+        font-weight: 400;
+        transition: all .3s ease;
+
+        @media (min-width: 992px) {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}

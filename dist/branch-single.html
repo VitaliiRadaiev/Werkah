@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Werkah</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+		body.page-is-load ._preload-body {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		body.page-is-load ._preload-body:before {
+			display: none;
+		}
+
+		._preload-body {
+			background-color: #fff;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+			-webkit-transition: all .6s ease .2s;
+			-o-transition: all .6s ease .2s;
+			transition: all .6s ease .2s;
+		}
+
+		._preload-body:before {
+			position: absolute;
+			content: '';
+			z-index: 999;
+			top: 50%;
+			left: 50%;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			border: 4px solid #6e6e6e;
+			border-right: 4px solid #fff;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			-webkit-animation: preloadBody 2s linear infinite;
+			animation: preloadBody 2s linear infinite;
+		}
+
+		@-webkit-keyframes preloadBody {
+			from {
+				-webkit-transform: translate(-50%, -50%) rotate(0);
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				-webkit-transform: translate(-50%, -50%) rotate(360deg);
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+
+		@keyframes preloadBody {
+			from {
+				-webkit-transform: translate(-50%, -50%) rotate(0);
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				-webkit-transform: translate(-50%, -50%) rotate(360deg);
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+	</style>
+	<script src="js/vendors.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <header class="header fixed z-50 w-full top-0 left-0 bg-white" data-header>
+    <div class="container">
+        <div class="header__body flex items-center min-h-[8rem] gap-[2rem]">
+            <div class="header__logo w-[11.2rem] lg:mr-[12.4rem]">
+                <a href="#">
+                    <img src="img/logo/logo.svg" alt="">
+                </a>
+            </div>
+            <ul class="header__nav hidden lg:flex mr-auto gap-[3rem]">
+                <li>
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Vacatures</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Onze
+                        filialen </a>
+                    <ul class="sub-menu absolute top-[100%] left-0 bg-white min-w-[18rem] p-[2.5rem] left-[-2.5rem]">
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Almere</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Amsterdam
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Enschede</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Hilversum</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Kampen</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Utrecht
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Alle
+                        functies </a>
+                    <ul class="sub-menu absolute top-[100%] left-0 bg-white min-w-[18rem] p-[2.5rem] left-[-2.5rem]">
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Hilversum</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Kampen</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Utrecht
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Contact</a>
+                </li>
+            </ul>
+            <div class="header__buttons hidden lg:flex items-center gap-[3rem]">
+                <a href="#"
+                    class="header__toggle-login font-bold text-[1.7rem] leading-[2.1rem] flex items-center gap-[0.7rem] transition hover:opacity-50">
+                    <img class="w-[1.8rem] shrink-0" src="img/icons/user.svg" alt="">
+                    Inloggen
+                </a>
+                <a href="#" class="header__vacancies btn-default">
+                    Alle vacatures
+                    <span>36</span>
+                </a>
+            </div>
+            <div class="header__burger lg:hidden ml-auto w-[3rem]" data-action="open-mobile-menu">
+                <img class="w-full h-auto" src="img/icons/bars-solid.svg" alt="">
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-menu lg:hidden fixed z-51 top-0 left-0 w-full h-full bg-themeColorThird" data-mobile-menu>
+    <div class="mobile-menu__head flex items-center justify-between min-h-[8rem] px-[20px]">
+        <div class="mobile-menu__logo w-[11.2rem]">
+            <a href="#">
+                <img class="w-full h-auto" src="img/logo/logo-light.svg" alt="">
+            </a>
+        </div>
+        <div class="mobile-menu__close" data-action="close-mobile-menu"><span></span></div>
+    </div>
+    <div class="mobile-menu__body flex flex-col gap-[40px] overflow-auto p-[20px] text-white">
+        <ul class="mobile-menu__nav">
+            <li>
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Vacatures</a>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Onze filialen </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Almere</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Amsterdam
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Enschede</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Hilversum</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Kampen</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Utrecht
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Alle functies </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Hilversum</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Kampen</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Utrecht
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Contact</a>
+            </li>
+        </ul>
+
+        <div class="mobile-menu__buttons flex items-center justify-center gap-[3rem] my-auto">
+            <a href="#"
+                class="header__toggle-login font-bold text-[1.7rem] leading-[2.1rem] flex items-center gap-[0.7rem] transition hover:opacity-50">
+                <img class="img-svg" src="img/icons/user.svg" alt="">
+                Inloggen
+            </a>
+            <a href="#" class="header__vacancies btn-default btn-default--second">
+                Alle vacatures
+                <span>36</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+    <main class="_page">
+        <div class="pt-[8rem]"></div>
+        <section class="hero-second  relative" data-hero-second>
+    <div class="hero-second__bg absolute z-1 top-0 left-0 w-full h-full lg:h-auto">
+        <div class="hero-second__bg-decor absolute z-2 left-0 w-full md:w-[60.75%] lg:w-[53.75%] h-full lg:h-auto">
+            <img class="w-full md:w-auto md:min-h-[44rem] h-full dm:h-auto object-bottom md:object-right object-cover" src="img/hero-second-decor.png" alt="">
+        </div>
+        <div class="hero-second__bg-img hidden absolute top-0 right-0 z-1 w-1/2  md:block w-[58%] xl:w-[56%] 2xl:w-[54%] h-[36rem]">
+            <img class="w-full h-full object-left object-cover" src="img/hero-second-img-1.jpg" alt="">
+        </div>
+    </div>
+    <div class="hero-second__body-wrap relative z-2">
+        <div class="hero-second__body container text-white flex flex-col gap-[3rem] min-h-[45rem] pt-[4.6rem] pb-[13rem]">
+            <div class="hero-second__breadcrumbs max-w-[41.3rem]">
+                <ul class="breadcrumbs font-bold text-[1.2rem] leading-[2.2rem]">
+                     
+                        <li class="inline"><a href="#">Home</a></li>
+                     
+                        <li class="inline"><a href="#">Onze filialen</a></li>
+                     
+                        <li class="inline">Amsterdam</li>
+                    
+                </ul>
+            </div>
+            <h1 class="hero-second__title title-1 max-w-[41.3rem]">Amsterdam</h1>
+            <div class="hero-second__text max-w-[41.3rem]">Verspreid over Amsterdam zijn vijf Albert Heijn filialen van BUN gevestigd. Bekijk hieronder onze filialen in Amsterdam.</div>
+        </div>
+    </div>
+</section>
+
+        <div class="pt-[8rem]"></div>
+        <section class="branch-single">
+            <div class="container">
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2.5rem]">
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Stadionplein</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-4.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Haarlemmerplein</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-5.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Waterlandplein</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-6.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Pieter Calandlaan</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-7.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Frederik Hendrikstraat</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-8.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Parnassusweg</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-9.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="pt-[8rem]"></div>
+
+        <section class="view-vacancies bg-white py-[8rem]">
+            <div class="view-vacancies__body container-forth">
+                <h2 class="view-vacancies__title title-2 text-center text-themeColor mb-[4.5rem]">
+                    Bekijk vacatures in Amsterdam
+                </h2>
+                <ul class="view-vacancies__list flex flex-col gap-[2rem] mb-[6.5rem]">
+                    <li>
+                        <div class="vacancy bg-white md:flex rounded-[0.5rem] overflow-hidden">
+                            <div class="vacancy__img ibg relative pb-[90%] md:basis-[24.4rem] md:min-h-[24rem] md:pb-0 shrink-0 grow-0">
+                                <img src="img/vacancy-img-1.jpg" alt="">
+                            </div>
+                            <div class="vacancy__body shrink grow pl-[2rem] md:pl-[5.6rem] py-[2rem] pr-[2rem]">
+                                <h2 class="vacancy__title text-[1.9rem] leading-[2.3rem] mb-[1rem]">Verkoopmedewerker</h2>
+                                <ul class="vacancy__list md:columns-2 gap-[1rem] md:max-w-[50rem] text text-textColorDarkSecond mb-[2rem] md:mb-[1rem]">
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Veel klantencontact
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Specialist op vakgebied
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Opleidingsmogelijkheden
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/marker.svg" alt="">
+                                        </div>
+                                        Almere, Europakwartier
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/time.svg" alt="">
+                                        </div>
+                                        Parttime
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/bag.svg" alt="">
+                                        </div>
+                                        Alle opleidingen
+                                    </li>
+                                </ul>
+                                <div class="vacancy__bottom flex flex-col gap-[2rem] md:justify-between md:flex-row">
+                                    <div class="vacancy__options">
+                                        <div class="vacancy__options-label text font-bold mb-[0.5rem]">Of kies je filiaal </div>
+                                        <div class="vacancy__options-buttons flex flex-wrap gap-[0.6rem]">
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Noord
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Oost
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Zuid 
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    West
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="vacancy__link btn-default btn-default--third">Bekijk vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vacancy bg-white md:flex rounded-[0.5rem] overflow-hidden">
+                            <div class="vacancy__img ibg relative pb-[90%] md:basis-[24.4rem] md:min-h-[24rem] md:pb-0 shrink-0 grow-0">
+                                <img src="img/vacancy-img-2.jpg" alt="">
+                            </div>
+                            <div class="vacancy__body shrink grow pl-[2rem] md:pl-[5.6rem] py-[2rem] pr-[2rem]">
+                                <h2 class="vacancy__title text-[1.9rem] leading-[2.3rem] mb-[1rem]">Verkoopmedewerker</h2>
+                                <ul class="vacancy__list md:columns-2 gap-[1rem] md:max-w-[50rem] text text-textColorDarkSecond mb-[2rem] md:mb-[1rem]">
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Veel klantencontact
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Specialist op vakgebied
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Opleidingsmogelijkheden
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/marker.svg" alt="">
+                                        </div>
+                                        Almere, Europakwartier
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/time.svg" alt="">
+                                        </div>
+                                        Parttime
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/bag.svg" alt="">
+                                        </div>
+                                        Alle opleidingen
+                                    </li>
+                                </ul>
+                                <div class="vacancy__bottom flex flex-col gap-[2rem] md:justify-between md:flex-row">
+                                    <div class="vacancy__options">
+                                        <div class="vacancy__options-label text font-bold mb-[0.5rem]">Of kies je filiaal </div>
+                                        <div class="vacancy__options-buttons flex flex-wrap gap-[0.6rem]">
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Noord
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Oost
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Zuid 
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    West
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="vacancy__link btn-default btn-default--third">Bekijk vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vacancy bg-white md:flex rounded-[0.5rem] overflow-hidden">
+                            <div class="vacancy__img ibg relative pb-[90%] md:basis-[24.4rem] md:min-h-[24rem] md:pb-0 shrink-0 grow-0">
+                                <img src="img/vacancy-img-2.jpg" alt="">
+                            </div>
+                            <div class="vacancy__body shrink grow pl-[2rem] md:pl-[5.6rem] py-[2rem] pr-[2rem]">
+                                <h2 class="vacancy__title text-[1.9rem] leading-[2.3rem] mb-[1rem]">Verkoopmedewerker</h2>
+                                <ul class="vacancy__list md:columns-2 gap-[1rem] md:max-w-[50rem] text text-textColorDarkSecond mb-[2rem] md:mb-[1rem]">
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Veel klantencontact
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Specialist op vakgebied
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                        </div>
+                                        Opleidingsmogelijkheden
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/marker.svg" alt="">
+                                        </div>
+                                        Almere, Europakwartier
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/time.svg" alt="">
+                                        </div>
+                                        Parttime
+                                    </li>
+                                    <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                        <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                            <img class="w-full h-auto" src="img/icons/bag.svg" alt="">
+                                        </div>
+                                        Alle opleidingen
+                                    </li>
+                                </ul>
+                                <div class="vacancy__bottom flex flex-col gap-[2rem] md:justify-between md:flex-row">
+                                    <div class="vacancy__options">
+                                        <div class="vacancy__options-label text font-bold mb-[0.5rem]">Of kies je filiaal </div>
+                                        <div class="vacancy__options-buttons flex flex-wrap gap-[0.6rem]">
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Noord
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Oost
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    Zuid 
+                                                </div>
+                                            </label>
+                                            <label class="vacancy__options-btn relative block cursor-pointer">
+                                                <input class="absolute opacity-0" type="checkbox">
+                                                <div class="vacancy__options-btn-text  flex min-h-[3rem] min-w-[7.8rem] items-center justify-center rounded-[100px] px-[1.6rem] py-[0.4rem] border-[0.2rem] border-themeColor text-themeColor text-[1.5rem] leading-[1.8rem] font-medium hover:bg-themeColor hover:text-white transition">
+                                                    West
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="vacancy__link btn-default btn-default--third">Bekijk vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="view-vacancies__bottom text-center">
+                    <a href="#" class="btn-default">Toon meer</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="advantages bg-themeColor pt-[8rem] lg:pt-[9.5rem] pb-[8rem]">
+    <div class="container text-white">
+        <h2 class="advantages__title title-2 text-center mb-[6rem]">Waarom werken bij Albert Heijn?</h2>
+        <ul class="advantages__list mb-[7rem]">
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-1.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Werken wanneer het jou uitkomt</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-2.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Doorgroeien kan!</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-3.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Je verdient lekker</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-4.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Je werkt in een leuk team</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-5.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Je werkt lekker dicht bij huis</div>
+            </li>
+        </ul>
+        <div class="advantages__bottom text-center">
+            <a href="#" class="advantages__btn btn-default">Solliciteer direct</a>
+        </div>
+    </div>
+</section>
+
+        <section class="places py-[8rem]">
+            <div class="container">
+                <div class="section-head flex items-center justify-between gap-[3rem] flex-wrap mb-[3rem]">
+                    <h2 class="section-head__title title-2 text-themeColor">Bekijk ook andere filialen </h2>
+                    <a href="#" class="section-head__btn btn-default">Alle filialen</a>
+                </div>
+                <ul class="places__list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2.5rem]">
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Almere</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-4.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <ul class="card__list-links flex flex-col gap-[2.5rem]">
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Parkwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Markenpoort </a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Europakwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Columbuskwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Stedenwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Oosterwold</a>
+            </li>
+        </ul>
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Almere</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-4.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <ul class="card__list-links flex flex-col gap-[2.5rem]">
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Parkwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Markenpoort </a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Europakwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Columbuskwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Stedenwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Oosterwold</a>
+            </li>
+        </ul>
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Almere</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-4.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <ul class="card__list-links flex flex-col gap-[2.5rem]">
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Parkwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Markenpoort </a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Europakwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Columbuskwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Stedenwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Oosterwold</a>
+            </li>
+        </ul>
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div class="card  bg-white rounded-[0.5rem] h-full flex flex-col">
+    <div class="card__head flex items-center min-h-[7rem] py-[1rem] px-[2.5rem] text-md font-bold">Almere</div>
+    <div class="card__img relative ibg pb-[55.25%]">
+        <img src="img/card-img-4.jpg" alt="">
+    </div>
+    <div class="card__content flex flex-col pt-[3rem] pb-[2rem] px-[2.5rem] gap-[2.8rem] grow">
+        <ul class="card__list-links flex flex-col gap-[2.5rem]">
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Parkwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Markenpoort </a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Europakwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Columbuskwartier</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Stedenwijk</a>
+            </li>
+            <li>
+                <a href="#" class="relative flex items-center justify-between gap-[2rem] after:content-['\e907'] transition hover:opacity-50 after:font-icomoon after:text-textColorDarkSecond after:text-[1em]">Oosterwold</a>
+            </li>
+        </ul>
+        <a href="#" class="card__btn btn-default btn-default--third mt-auto">Vestiging in Almere</a>
+    </div>
+</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-white pt-[8rem] md:pt-[10rem] pb-[4rem]" data-footer>
+    <div class="container">
+        <div class="footer__row-1 mb-[2rem]">
+            <div class="footer__contact flex flex-wrap flex-row justify-between gap-[4rem] text lg:flex-col">
+                <div class="footer__logo w-[11.2rem]">
+                    <a href="#">
+                        <img class="w-full h-auto" src="img/logo/logo.svg" alt="">
+                    </a>
+                </div>
+                <div class="footer__text font-bold">
+                    <p class="mb-[1rem]">Werken bij BUN</p>
+                    <p class="mb-0">Een baan bij AH</p>
+                </div>
+                <ul class="footer__contact-list font-bold flex flex-col gap-[1rem]">
+                    <li>
+                        <a href="#">(036) 535 44 43</a>
+                    </li>
+                    <li>
+                        <a href="#">www.bun.nl</a>
+                    </li>
+                    <li>
+                        <a href="#">info@bun.nl</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="footer__nav block md:grid grid-cols-4 gap-[6rem]">
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Functies</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Vulploegmedewerker</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Kassamedewerker</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Verkoopmedewerker Brood</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Kwaliteitsmedewerker</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">BBL-Talent</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Vroege vogels</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Locaties</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Almere</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Amsterdam</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Enschede</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Hilversum</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Rampen</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Utrecht</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Algemeen</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Over Bun</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Werken bij AH </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Open sollicitatie</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Legal</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Disclaimer</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Privacy policy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Press</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="social justify-center lg:justify-start">
+                <li>
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/instagram.svg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/linkedin-1.svg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/youtube.svg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__row-2">
+            <div class="footer__copy text-center text-[1.7rem] leading-[3.6rem] font-bold">© werken bij Bun</div>
+        </div> 
+    </div> 
+</footer>
+</body>
+
+</html>

@@ -91,7 +91,7 @@
 		}
 	}
 	&._active {
-		z-index: 5;
+		z-index: 10;
 		.select__value {
 			&:before {
 				transform: translateY(-50%) scale(1, -1);
