@@ -6,6 +6,9 @@
 
 @import 'icomoon.scss';
 
+@import "plugins/swiper-bundle";
+@import "plugins/fancybox";
+
 @import "common.scss";  
 
 // ==== components =========
@@ -19,10 +22,17 @@
 @import "../components/hero-filter/hero-filter.scss";
 @import "../components/multiple-select/multiple-select.scss";
 @import "../components/filter/filter.scss";
+@import "../components/vacancy-single-hero/vacancy-single-hero.scss";
+@import "../components/article/article.scss";
+@import "../components/cars-simple/cars-simple.scss";
+@import "../components/text-content/text-content.scss";
+@import "../components/loading-box/loading-box.scss";
+@import "../components/testimonials/testimonials.scss";
 // // ==== components =========
 
 
 // ==== pages =========
 @import "pages/home.scss";  
 @import "pages/vacancy.scss";  
+@import "pages/vacancy-single.scss";  
 // // ==== pages =========

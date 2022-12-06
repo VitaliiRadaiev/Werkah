@@ -612,9 +612,23 @@ window.popup = {
 }
 
 	}
-
+	
 	slidersInit() {
-
+		{
+    let testimonialsSlider = document.querySelector('[data-testimonials] .testimonials__slider');
+    if(testimonialsSlider) {
+        let sliderData = new Swiper(testimonialsSlider, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            autoHeight: true,
+            speed: 800,
+            navigation: {
+                prevEl: testimonialsSlider.querySelector('.slider-btn.prev'),
+                nextEl: testimonialsSlider.querySelector('.slider-btn.next'),
+            },
+        });
+    }
+}
 	}
 
 
@@ -1226,7 +1240,7 @@ window.popup = {
             }
         })
     }
-};
+}
 		{
     let multipleSelects = document.querySelectorAll('[data-multiple-select]');
     if(multipleSelects.length) {
@@ -1240,7 +1254,7 @@ window.popup = {
             })
         })
     }
-};
+}
 		{
     let footer = document.querySelector('[data-footer]');
     if(footer) {
@@ -1271,7 +1285,7 @@ window.popup = {
             })
         }
     }
-};
+}
 		{
     let filterContainer = document.querySelector('[data-filter]');
     if(filterContainer) {
@@ -1324,7 +1338,53 @@ window.popup = {
             })
         }
     }
-};
+}
+		{
+    let vacancySingleHeroContainer = document.querySelector('[data-vacancy-single-hero]');
+    if(vacancySingleHeroContainer) {
+        let img = vacancySingleHeroContainer.querySelector('.vacancy-single-hero__img');
+        if(img) {
+            setInterval(() => {
+                if(document.documentElement.clientWidth > 991.98) {
+                    vacancySingleHeroContainer.style.minHeight = `calc(${img.clientHeight}px - 40px)`;
+                } else {
+                    vacancySingleHeroContainer.removeAttribute('style');
+                }
+            },100)
+        }
+    }
+}
+		{
+    let loadingBoxElements = document.querySelectorAll('[data-loading-box]');
+    if(loadingBoxElements.length) {
+        loadingBoxElements.forEach(loadingBox => {
+            let files = []
+            let input = loadingBox.querySelector('input');
+            let namesContainer = loadingBox.querySelector('.loading-box__names');
+            if(input) {
+                const changeHandler = (event) => {
+                    if (!event.target.files.length) {
+                        return
+                    }
+    
+                    files = Array.from(event.target.files);
+    
+                    let result = files.map(item => item.name);
+                    namesContainer.innerHTML = result.join('<br> ');
+                }
+    
+                input.addEventListener('change', changeHandler);
+
+                loadingBox.addEventListener('dragenter', (e) => {
+                    loadingBox.classList.add('file-is-over');
+                });
+                loadingBox.addEventListener('dragleave', (e) => {
+                    loadingBox.classList.remove('file-is-over');
+                });
+            }
+        })
+    }
+}
 	}
 
 	componentsAfterLoad() {

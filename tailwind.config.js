@@ -42,12 +42,14 @@ module.exports = {
         '52': '52',
       },
       colors: {
-        textColorDark: '#000',
+        textColorDark: '#0D3855',
         textColorDarkSecond: '#808695',
         textColorLight: '#fff',
         themeColor: '#00A1E2',
         themeColorSecond: '#77AE29',
         themeColorThird: '#0D3855',
+        themeColorFourth: '#F0FAFC',
+
       },
       fontFamily: {
         icomoon: 'icomoon',

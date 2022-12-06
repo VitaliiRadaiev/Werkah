@@ -1,0 +1,69 @@
+.application-process {
+
+    &__title {
+    }
+
+    &__list {
+    }
+
+    &__list-circle {
+    }
+
+    &__list-line {
+        
+        @media (min-width: 768px) {
+            left: calc(50% + 2.8rem);
+            width: calc((50% - 2.8rem) * 2);
+        }
+
+        &[data-text] {
+            &:before {
+ 
+                content: attr(data-text);
+                left: 0;
+    
+                width: 100%;
+                text-align: center;
+                font-size: 1.9rem;
+                line-height: 1.26em;
+
+                @media (min-width: 768px) {
+                    position: absolute;
+                    bottom: 1.3rem;
+                }
+            }
+        }
+    }
+
+    &__list-text {
+    }
+
+    &__bottom {
+    }
+}
+
+.application-tips {
+
+    &__content {
+    }
+
+    &__title {
+    }
+}
+
+.stacked-list {
+
+    &__item {
+    }
+
+    &__item-head {
+        &.active {
+            & i {
+                transform: translateY(-50%) scale(1, -1);
+            }
+        }
+    }
+
+    &__item-content {
+    }
+}

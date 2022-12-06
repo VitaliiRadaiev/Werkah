@@ -53,9 +53,9 @@ class App {
 	popupHandler() {
 		@@include('../components/popup/popup.js')
 	}
-
+	
 	slidersInit() {
-
+		@@include('../components/testimonials/testimonials.js')
 	}
 
 
@@ -274,10 +274,12 @@ class App {
 
 
 	componentsBeforeLoad() {
-		@@include('../components/multiple-select/multiple-select.js');
-		@@include('../components/hero-filter/hero-filter.js');
-		@@include('../components/footer/footer.js');
-		@@include('../components/filter/filter.js');
+		@@include('../components/multiple-select/multiple-select.js')
+		@@include('../components/hero-filter/hero-filter.js')
+		@@include('../components/footer/footer.js')
+		@@include('../components/filter/filter.js')
+		@@include('../components/vacancy-single-hero/vacancy-single-hero.js')
+		@@include('../components/loading-box/loading-box.js')
 	}
 
 	componentsAfterLoad() {

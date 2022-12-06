@@ -1,0 +1,41 @@
+.testimonials {
+
+    &__title {
+    }
+
+    &__slider {
+    }
+
+    &__slider-buttons {
+        & .prev {
+            &.swiper-button-disabled {
+                pointer-events: none;
+                opacity: 0.4;
+            }
+        }
+        & .next {
+            &.swiper-button-disabled {
+                pointer-events: none;
+                opacity: 0.4;
+            }
+        }
+    }
+}
+
+.testimonial-card {
+
+    &__img {
+    }
+
+    &__content {
+    }
+
+    &__name {
+    }
+
+    &__position {
+    }
+
+    &__text {
+    }
+}

@@ -83,3 +83,31 @@
         }
     }
 }
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all .3s ease;
+
+    @media (min-width: 992px) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &:before {
+        font-family: 'icomoon' !important;
+        content: "\e907";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        color: #fff;
+        background-color: $themeColor;
+        font-size: 1.8rem;
+    }
+}

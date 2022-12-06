@@ -37,6 +37,13 @@
         outline-width: 0.2rem;
     }
 
+    &--text-dark {
+        font-weight: 400;
+        &::placeholder {
+            color: $themeColorThird;
+        }
+    }
+
 }
 .textarea {
     display: flex;

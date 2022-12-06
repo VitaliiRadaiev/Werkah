@@ -1,0 +1,30 @@
+.vacancy-single-hero {
+
+    &__bg {
+    }
+
+    &__img {
+        -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjMyIiBoZWlnaHQ9IjQ4MCIgdmlld0JveD0iMCAwIDYzMiA0ODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMCAwSDYzMS42MTFDNjMxLjYxMSAwIDU1OS42NjIgMzE4LjE5OCA1MTguODY5IDQyMC4zMTlDNTA0LjkxOCA0NTUuMjQ0IDQ3Ny4xMSA0NjkuODI1IDQ3MC45NjQgNDcyLjM1M0M0NTcuMTgyIDQ3OC4wMjMgNDQwLjU4NCA0ODAuNzk5IDQxOS44NjMgNDc5Ljc5OUMzNjUuOTM4IDQ3Ny4xOTcgMzAxLjQ1NyA0NTYuNTg1IDI1Ni4yNDIgNDQzLjI4NkMxODYuOTYxIDQyMi45MDggMCAzNTkuOCAwIDM1OS44TDAgMFoiIGZpbGw9IiNDNEM0QzQiLz4KPC9zdmc+Cg==);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+    }
+
+    &__decor {
+    }
+
+    &__body {
+    }
+
+    &__inner {
+    }
+
+    &__title {
+    }
+
+    &__subtitle {
+    }
+}
