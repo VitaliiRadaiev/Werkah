@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<title>Werkah</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+		body.page-is-load ._preload-body {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		body.page-is-load ._preload-body:before {
+			display: none;
+		}
+
+		._preload-body {
+			background-color: #fff;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+			-webkit-transition: all .6s ease .2s;
+			-o-transition: all .6s ease .2s;
+			transition: all .6s ease .2s;
+		}
+
+		._preload-body:before {
+			position: absolute;
+			content: '';
+			z-index: 999;
+			top: 50%;
+			left: 50%;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			border: 4px solid #6e6e6e;
+			border-right: 4px solid #fff;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			-webkit-animation: preloadBody 2s linear infinite;
+			animation: preloadBody 2s linear infinite;
+		}
+
+		@-webkit-keyframes preloadBody {
+			from {
+				-webkit-transform: translate(-50%, -50%) rotate(0);
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				-webkit-transform: translate(-50%, -50%) rotate(360deg);
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+
+		@keyframes preloadBody {
+			from {
+				-webkit-transform: translate(-50%, -50%) rotate(0);
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				-webkit-transform: translate(-50%, -50%) rotate(360deg);
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+	</style>
+	<script src="js/vendors.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <header class="header fixed z-50 w-full top-0 left-0 bg-white" data-header>
+    <div class="container">
+        <div class="header__body flex items-center min-h-[8rem] gap-[2rem]">
+            <div class="header__logo w-[11.2rem] lg:mr-[12.4rem]">
+                <a href="#">
+                    <img src="img/logo/logo.svg" alt="">
+                </a>
+            </div>
+            <ul class="header__nav hidden lg:flex mr-auto gap-[3rem]">
+                <li>
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Vacatures</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Onze
+                        filialen </a>
+                    <ul class="sub-menu absolute top-[100%] left-0 bg-white min-w-[18rem] p-[2.5rem] left-[-2.5rem]">
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Almere</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Amsterdam
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Enschede</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Hilversum</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Kampen</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Utrecht
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Alle
+                        functies </a>
+                    <ul class="sub-menu absolute top-[100%] left-0 bg-white min-w-[18rem] p-[2.5rem] left-[-2.5rem]">
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Hilversum</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Kampen</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Utrecht
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"
+                        class="header__nav-link transition hover:opacity-50 flex items-center min-h-[4rem] font-bold text-[1.7rem] leading-[2.1rem]">Contact</a>
+                </li>
+            </ul>
+            <div class="header__buttons hidden lg:flex items-center gap-[3rem]">
+                <a href="#"
+                    class="header__toggle-login font-bold text-[1.7rem] leading-[2.1rem] flex items-center gap-[0.7rem] transition hover:opacity-50">
+                    <img class="w-[1.8rem] shrink-0" src="img/icons/user.svg" alt="">
+                    Inloggen
+                </a>
+                <a href="#" class="header__vacancies btn-default">
+                    Alle vacatures
+                    <span>36</span>
+                </a>
+            </div>
+            <div class="header__burger lg:hidden ml-auto w-[3rem]" data-action="open-mobile-menu">
+                <img class="w-full h-auto" src="img/icons/bars-solid.svg" alt="">
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-menu lg:hidden fixed z-51 top-0 left-0 w-full h-full bg-themeColorThird" data-mobile-menu>
+    <div class="mobile-menu__head flex items-center justify-between min-h-[8rem] px-[20px]">
+        <div class="mobile-menu__logo w-[11.2rem]">
+            <a href="#">
+                <img class="w-full h-auto" src="img/logo/logo-light.svg" alt="">
+            </a>
+        </div>
+        <div class="mobile-menu__close" data-action="close-mobile-menu"><span></span></div>
+    </div>
+    <div class="mobile-menu__body flex flex-col gap-[40px] overflow-auto p-[20px] text-white">
+        <ul class="mobile-menu__nav">
+            <li>
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Vacatures</a>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Onze filialen </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Almere</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Amsterdam
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Enschede</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Hilversum</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Kampen</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[2.4rem] leading-[4.4rem] transition hover:opacity-50">Utrecht
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Alle functies </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Hilversum</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Kampen</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="sub-menu__link text-[1.7rem] leading-[3.8rem] transition hover:opacity-50">Utrecht
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="mobile-menu__nav-link w-full block text-[2.6rem] leading-[6rem] font-bold">Contact</a>
+            </li>
+        </ul>
+
+        <div class="mobile-menu__buttons flex items-center justify-center gap-[3rem] my-auto">
+            <a href="#"
+                class="header__toggle-login font-bold text-[1.7rem] leading-[2.1rem] flex items-center gap-[0.7rem] transition hover:opacity-50">
+                <img class="img-svg" src="img/icons/user.svg" alt="">
+                Inloggen
+            </a>
+            <a href="#" class="header__vacancies btn-default btn-default--second">
+                Alle vacatures
+                <span>36</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+    <main class="_page">
+        <div class="pt-[8rem]"></div>
+
+        <section class="about-hero relative">
+            <div class="about-hero__bg ibg absolute top-0 left-0 z-1 h-[70%] md:h-[50%] w-full">
+                <img src="img/blue-bg.jpg" alt="">
+            </div>
+            <div class="about-hero__body container pt-[8rem] relative z-2 text-white text-center">
+                <h2 class="about-hero__title title-2 mb-[1.6rem]">Over Bun en Albert Heijn</h2>
+                <div class="about-hero__text mx-auto max-w-[53.8rem] mb-[4.5rem]">
+                    Je vraagt je misschien af wat Albert Heijn en BUN met elkaar te maken hebben? Dat gaan we je uitleggen!
+                </div>
+                <a href="https://youtu.be/hCerLM-A1qM" data-fancybox class="about-hero__poster group block relative ibg mx-auto max-w-[106rem] rounded-[0.5rem] border-white border-[1.5rem] pb-[55%] md:pb-[42.9%]">
+                    <img class="object-top" src="img/bg.jpg" alt="">
+                    <i class="icon-play_circle_filled absolute z-2 text-[8rem] text-white left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-125 transition"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="about-first-section py-[8rem]">
+            <div class="about-first-section__body container-second flex flex-col md:flex-row gap-[4rem] lg:gap-[10.5rem]">
+                <div class="about-first-section__text-wrap text-content text-[1.7rem] leading-[2.8rem] text-[##1E1D1B] md:shrink md:grow">
+                    <h2>BUN</h2>
+                    <p>
+                        BUN is een familiebedrijf uit Almere welke haar geschiedenis kent in Amsterdam. In 1957 opende de heer Bun Senior een melkwinkel aan de Granaatstraat. In 1978 werd door BUN op uitnodiging van de gemeente één van de eerste supermarkten in Almere geopend. Hierdoor is BUN dus een echte pionier in de polder! Door de gedreven ondernemersgeest van de familie is het bedrijf uitgegroeid naar een onderneming met ruim 3500 medewerkers, 22 supermarkten en een ruime vastgoedportefeuille.
+                    </p>
+                </div>
+                <div class="about-first-section__side md:shrink-0 md:grow-0 md:basis-[36rem]">
+                    <div class="box bg-white rounded-[0.5rem] py-[3rem] px-[2rem] md:p-[4rem]">
+                        <h5 class="box__title !text-themeColorThird !text-[1.9rem] !leading-[2.3rem] font-bold mb-[2rem]">Pluspunten</h5>
+                        <ul class="box__list text text-textColorDarkSecond ">
+                            <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                    <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                </div>
+                                Opgericht in 1957
+                            </li>
+                            <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                    <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                </div>
+                                Hoofdkantoor Almere
+                            </li>
+                            <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                    <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                </div>
+                                Familiebedrijf
+                            </li>
+                            <li class="flex gap-[0.6rem] mb-[0.8rem]">
+                                <div class="vacancy__list-icon  w-[2.4rem] grow-0 shrink-0">
+                                    <img class="w-full h-auto" src="img/icons/icoon-check.svg" alt="">
+                                </div>
+                                Grootste franchisenemer van AH
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-second-section bg-white py-[8rem]">
+            <div class="about-second-section__body container-second flex flex-col md:flex-row-reverse gap-[4rem] lg:gap-[9rem] md:items-center">
+                <div class="about-second-section__text-wrap  text-content text-[1.7rem] leading-[2.8rem] text-[##1E1D1B] md:shrink md:grow">
+                    <h2>BUN en Albert Heijn</h2>
+                    <p>
+                        De exploitatie van supermarkten. Dat is waar Albert Heijn in beeld komt. Wij zijn namelijk franchisenemer van Albert Heijn. Dit houdt in dat BUN eigenaar is van de winkel, maar hierin wel het Albert Heijn concept uitdraagt. Als je bij één van onze Albert Heijn filialen komt werken werk je dus niet voor Albert Heijn, maar voor BUN. Dit betekent dat je wel gewoon uitbetaald wordt volgens de CAO Levensmiddelen, maar daarbij ook de voordelen zult ervaren van werken bij een familiebedrijf.
+                    </p>
+                </div>
+                <div class="about-second-section__img ibg relative rounded-[0.5rem] overflow-hidden pb-[66.66%] md:pb-0 md:basis-[44rem] lg:basis-[54rem] md:shrink-0 md:h-[36rem]">
+                    <img src="img/about-img-1.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="about-third-sectio py-[8rem]">
+            <div class="about-third-section__body container-second flex flex-col md:flex-row gap-[4rem] lg:gap-[10.4rem] md:items-center">
+                <div class="about-third-section__text-wrap  text-content text-[1.7rem] leading-[2.8rem] text-[##1E1D1B] md:shrink md:grow">
+                    <h2>Onze medewerkers</h2>
+                    <p>
+                        Wij zijn van mening dat succes valt of staat met de mensen die in je organisatie werken. Wij zijn een familiebedrijf met enthousiaste en toegewijde medewerkers. Wij vinden het belangrijk om goede medewerkers aan te houden. Het is bij ons dan ook eerder regel dan uitzondering dat medewerkers een jubileum vieren, omdat ze soms al 12½, 25 of zelfs 40 jaar bij ons werken. BUN hecht veel waarde aan de persoonlijke ontwikkeling van haar medewerkers. 
+                    </p>
+                </div>
+                <div class="about-third-section__img ibg relative rounded-[0.5rem] overflow-hidden pb-[66.66%] md:pb-0 md:basis-[44rem] lg:basis-[54rem] md:shrink-0 md:h-[36rem]">
+                    <img src="img/about-img-2.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="advantages bg-themeColor pt-[8rem] lg:pt-[9.5rem] pb-[8rem]">
+    <div class="container text-white">
+        <h2 class="advantages__title title-2 text-center mb-[6rem]">Waarom werken bij Albert Heijn?</h2>
+        <ul class="advantages__list mb-[7rem]">
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-1.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Werken wanneer het jou uitkomt</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-2.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Doorgroeien kan!</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-3.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Je verdient lekker</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-4.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Je werkt in een leuk team</div>
+            </li>
+            <li>
+                <div class="advantages__list-icon h-[8.5rem] flex items-center justify-center mb-[5rem]">
+                    <img class="h-full w-auto" src="img/advantages-icon-5.svg" alt="">
+                </div>
+                <div class="advantages__list-text text-center text-md font-bold">Je werkt lekker dicht bij huis</div>
+            </li>
+        </ul>
+        <div class="advantages__bottom text-center">
+            <a href="#" class="advantages__btn btn-default">Solliciteer direct</a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer  pt-[8rem] md:pt-[10rem] pb-[4rem]" data-footer>
+    <div class="container">
+        <div class="footer__row-1 mb-[2rem]">
+            <div class="footer__contact flex flex-wrap flex-row justify-between gap-[4rem] text lg:flex-col">
+                <div class="footer__logo w-[11.2rem]">
+                    <a href="#">
+                        <img class="w-full h-auto" src="img/logo/logo.svg" alt="">
+                    </a>
+                </div>
+                <div class="footer__text font-bold">
+                    <p class="mb-[1rem]">Werken bij BUN</p>
+                    <p class="mb-0">Een baan bij AH</p>
+                </div>
+                <ul class="footer__contact-list font-bold flex flex-col gap-[1rem]">
+                    <li>
+                        <a href="#">(036) 535 44 43</a>
+                    </li>
+                    <li>
+                        <a href="#">www.bun.nl</a>
+                    </li>
+                    <li>
+                        <a href="#">info@bun.nl</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="footer__nav block md:grid grid-cols-4 gap-[6rem]">
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Functies</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Vulploegmedewerker</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Kassamedewerker</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Verkoopmedewerker Brood</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Kwaliteitsmedewerker</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">BBL-Talent</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Vroege vogels</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Locaties</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Almere</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Amsterdam</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Enschede</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Hilversum</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Rampen</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Utrecht</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Algemeen</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Over Bun</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Werken bij AH </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Open sollicitatie</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="footer__nav-link  text-md font-bold md:mb-[1.3rem] block">Legal</a>
+                    <ul class="footer__sub-menu hidden md:block">
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Disclaimer</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Privacy policy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__sub-menu-link text-textColorDarkSecond text-[1.7rem] leading-[3.6rem]">Press</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="social justify-center lg:justify-start">
+                <li>
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/instagram.svg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/linkedin-1.svg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/youtube.svg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__row-2">
+            <div class="footer__copy text-center text-[1.7rem] leading-[3.6rem] font-bold">© werken bij Bun</div>
+        </div> 
+    </div> 
+</footer>
+</body>  
+</html>
