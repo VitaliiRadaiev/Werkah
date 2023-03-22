@@ -33,6 +33,47 @@
                 & .sub-menu {
                     display: none;
                     animation: fadeIn .3s ease;
+                    padding-left: 0;
+                    padding-right: 0;
+                    min-width: 18rem;
+                    width: max-content;
+
+                    & > li {
+                        padding-left: 2.5rem;
+                        padding-right: 2.5rem;
+                    }
+
+                    & > li.menu-item-has-children {
+                        position: relative;
+
+
+                        &:before {
+                            position: absolute;
+                            content: "\e907";
+                            top: 50%;
+                            right: 0.5em;
+                            transform: translateY(-50%);
+                            z-index: 1.7rem;
+                            font-family: 'icomoon' !important;
+                        }
+
+                        & .sub-menu {
+                            top: 0;
+                            left: 100%;
+                            padding-top: 1rem;
+                            padding-bottom: 1rem;
+                            
+                        }
+                        
+                        @media (min-width: 992px) {
+                            &:hover {
+                                background-color: rgba($textColorDark, 0.2);
+                                & .sub-menu {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 @keyframes fadeIn {
@@ -41,7 +82,7 @@
                 }
 
                 &:hover {
-                    & .sub-menu {
+                    & > .sub-menu {
                         display: block;
                     }
                 }
@@ -163,9 +204,13 @@
                     }
                 }
 
-                & .sub-menu {
+                & > .sub-menu {
                     display: none;
                     padding-bottom: 12px;
+
+                    & .sub-menu {
+                        padding-left: 2rem;
+                    }
                 }
             }
 

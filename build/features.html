@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('_head.html')
+
+<body>
+    @@include('components/header/_header.html')
+
+    <main class="_page">
+        <div class="pt-[8rem]"></div>
+        @@include('components/hero/_hero.html', {
+            "breadcrumbs": ['<a href="#">Home</a>', 'Alle functies'],
+            "title": "Onze functies",
+            "text": "Bij Albert Heijn zijn er veel verschillende functies nodig om de winkel veilig, verzorgd en op voorraad te houden. Mogelijkheden genoeg! Waar liggen jouw kwaliteiten?"
+        })
+        <div class="pt-[6rem]"></div>
+        <section class="features">
+            <div class="features__body container">
+                <ul class="list-default grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[4rem] gap-y-[3rem] mb-[4rem] md:mb-[6rem]">
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Kassamedewerker",
+                            "img": "img/card-img-1.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Vroege Vogels",
+                            "img": "img/card-img-2.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Servicedesk Medewerker",
+                            "img": "img/card-img-3.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Kassamedewerker",
+                            "img": "img/card-img-1.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Vroege Vogels",
+                            "img": "img/card-img-2.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Servicedesk Medewerker",
+                            "img": "img/card-img-3.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Kassamedewerker",
+                            "img": "img/card-img-1.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Vroege Vogels",
+                            "img": "img/card-img-2.jpg"
+                        })
+                    </li>
+                    <li>
+                        @@include('components/card/_card.html', {
+                            "mode": "",
+                            "head": "Servicedesk Medewerker",
+                            "img": "img/card-img-3.jpg"
+                        })
+                    </li>
+                </ul>
+                <div class="features__bottom text-center">
+                    <div class="features__bottom-label text mb-[1rem] text-textColorDarkSecond"><strong>Toont 6</strong> van de 24 vacatures</div>
+                    <a href="#" class="btn-default">Laad meer vacatures</a>
+                </div>
+            </div>
+        </section>
+        <div class="pt-[8rem]"></div>
+        @@include('components/advantages/_advantages.html')
+    </main>
+
+    @@include('components/footer/_footer.html', {
+        "mode": ""
+    })
+</body>
+
+</html>

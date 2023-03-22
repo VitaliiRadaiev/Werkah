@@ -21,6 +21,17 @@
 		margin-bottom: 1.5em;
 	}
 
+	& a {
+		color: $themeColor;
+		transition: all .3s ease;
+
+		@media (min-width: 992px) {
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+	}
+
     & ul:not([class]) {
 		padding-left: 0em;
 

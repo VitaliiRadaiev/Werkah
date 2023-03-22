@@ -397,7 +397,7 @@ class App {
 		
 let mobileMenu = document.querySelector('[data-mobile-menu]'); 
 if (mobileMenu) {
-    let menuItemHasChildren = mobileMenu.querySelectorAll('.mobile-menu__nav .menu-item-has-children');
+    let menuItemHasChildren = mobileMenu.querySelectorAll('.mobile-menu__nav > li.menu-item-has-children');
     if (menuItemHasChildren.length) {
         menuItemHasChildren.forEach(item => {
             let subMenu = item.querySelector('.sub-menu');
@@ -1077,6 +1077,16 @@ window.popup = {
 
 
 	componentsBeforeLoad() {
+		{
+    let promoHeaderSelect = document.querySelector('.promo-header__select select');
+   // let promoHeaderBtn = document.querySelector('.promo-header__btn');
+    
+    if(promoHeaderSelect) {
+        promoHeaderSelect.addEventListener('change', () => {
+            document.location.href = promoHeaderSelect.value;
+        });
+    }
+}
 		class MultipleSelect extends Utils {
     constructor(container, id = 0, options = null) {
         super()
@@ -1088,6 +1098,7 @@ window.popup = {
         this.id = id;
         this.options = options;
         this.placeholder = this.head.innerText;
+        this.selectedInputs = [];
 
         if (!container) return console.log('MultipleSelect error');
 
@@ -1117,6 +1128,11 @@ window.popup = {
                 if (parent.getAttribute('data-multiple-select-id') == this.id) {
                     this.removeSelectedButtons(parent.getAttribute('data-multiple-select-id'), parent.getAttribute('data-multiple-btn-id'));
                     this.unCheckInput(parent.getAttribute('data-multiple-btn-id'));
+
+                    if(this.options.on?.afterChange) {
+                        let input = this.inputs.filter(input => input.getAttribute('data-multiple-select-input-id') === parent.getAttribute('data-multiple-btn-id'));
+                        this.options.on?.afterChange(input[0]);
+                    }
                 }
             }
 
@@ -1134,13 +1150,29 @@ window.popup = {
             this.inputs.forEach((input, index) => {
                 input.setAttribute('data-multiple-select-id', this.id);
                 input.setAttribute('data-multiple-select-input-id', index);
+                
+                let text = input.parentElement.querySelector('.multiple-select__option-text').innerText;
+
+                if(input.checked) {
+                    this.addSelectedButtons(this.id, index.toString(), text, input);
+
+                    if(this.options.on?.afterChange) {
+                        this.options.on?.afterChange(input);
+                    }
+
+                }
 
                 input.addEventListener('change', (e) => {
                     if (e.target.checked) {
-                        this.addSelectedButtons(this.id, index, input.value);
+                        this.addSelectedButtons(this.id, index.toString(), text, input);
                     } else {
-                        this.removeSelectedButtons(this.id, index);
+                        this.removeSelectedButtons(this.id, index.toString());
                     }
+
+                    if(this.options.on?.afterChange) {
+                        this.options.on?.afterChange(input);
+                    }
+
                 })
             })
         }
@@ -1172,13 +1204,6 @@ window.popup = {
         let optionsContainer = this.container.querySelector('.multiple-select__options');
         this.container.classList.add('multiple-select--open');
         this.slideDown(optionsContainer, 100);
-
-        // if(this.allMultipleSelectsOnPage.length) {
-        //     this.allMultipleSelectsOnPage.forEach(multipleSelect => {
-        //         if(multipleSelect === this.container) return;
-
-        //     })
-        // }
     }
 
     close() {
@@ -1187,23 +1212,32 @@ window.popup = {
         this.slideUp(optionsContainer, 100)
     }
 
-    addSelectedButtons(selectId, btnId, btnText) {
+    addButton(container, selectId, btnId, btnText, input) {
+
+        let el = container.querySelector(`[data-input-name="${input.name}"][data-input-value="${input.value}"]`);
+        if(el) return;
+
+        container.insertAdjacentHTML('beforeend', `
+        <button class="selected-filter-btn" data-multiple-select-id="${selectId}" data-multiple-btn-id="${btnId}" data-input-name="${input.name}" data-input-value="${input.value}">
+            <span class="selected-filter-btn__close"></span>
+            ${btnText}
+        </button>
+        `)
+
+    }
+
+    addSelectedButtons(selectId, btnId, btnText, input) {
+        if(this.selectedInputs.includes(btnId)) return;
+
         if (!this.head.children.length) this.head.innerHTML = '';
 
-        const addButton = (container) => {
-            container.insertAdjacentHTML('beforeend', `
-            <button class="selected-filter-btn" data-multiple-select-id="${selectId}" data-multiple-btn-id="${btnId}">
-                <span class="selected-filter-btn__close"></span>
-                ${btnText}
-            </button>
-            `)
-        }
-
-        addButton(this.head);
+        this.addButton(this.head, selectId, btnId, btnText, input);
 
         if (this.options.duplicateSelectedButtons) {
-            addButton(this.options.duplicateSelectedButtons);
+            this.addButton(this.options.duplicateSelectedButtons, selectId, btnId, btnText, input);
         }
+
+        this.selectedInputs.push(btnId);
     }
 
     removeSelectedButtons(selectId, btnId) {
@@ -1215,6 +1249,8 @@ window.popup = {
         }
 
         if (!this.head.children.length) this.head.innerHTML = this.placeholder;
+
+        this.selectedInputs = this.selectedInputs.filter(i => i != btnId);
     }
 
     clearAll() {
@@ -1231,6 +1267,8 @@ window.popup = {
                 })
             }
         }
+
+        this.selectedInputs = [];
     }
 
     unCheckInput(inputId) {
@@ -1240,8 +1278,265 @@ window.popup = {
             }
         })
     }
+
+    setInputStateByName(name, value, state) {
+        if(!name) return;
+        
+        let input = this.inputs.filter(input => input.name === name && input.value === value)[0];
+        if(input) {
+            input.checked = state;
+
+            let btnId = input.getAttribute('data-multiple-select-input-id');
+
+            if(state) {
+                if(this.selectedInputs.includes(btnId)) return;
+
+                if (!this.head.children.length) this.head.innerHTML = '';
+                let text = input.parentElement.querySelector('.multiple-select__option-text').innerText;
+                this.addButton(
+                    this.head, 
+                    this.id, 
+                    btnId, 
+                    text, 
+                    input
+                );
+
+                this.selectedInputs.push(btnId);
+            } else {
+                this.removeSelectedButtons(this.id, input.getAttribute('data-multiple-select-input-id'));
+            }
+        }
+
+    }
+
+    update() {
+        if (this.inputs) {
+            this.inputs.forEach((input, index) => {
+                let text = input.parentElement.querySelector('.multiple-select__option-text').innerText;
+
+                if(input.checked) {
+                    this.addSelectedButtons(this.id, index.toString(), text, input);
+
+                    if(this.options.on?.afterChange) {
+                        this.options.on?.afterChange(input);
+                    }
+                }
+            })
+        }
+    }
+}
+
+
+		{
+    let filterContainer = document.querySelector('[data-filter]');
+    if (filterContainer) {
+        let rows = filterContainer.querySelectorAll('.filter__row');
+        if (rows.length) {
+            rows.forEach(row => {
+                let listHideItems = row.querySelectorAll('.filter__list li.hidden');
+                let btnMore = row.querySelector('.filter__btn-more');
+
+                if (listHideItems.length) {
+                    if (btnMore) {
+                        btnMore.classList.remove('hidden');
+
+                        btnMore.addEventListener('click', () => {
+                            if (row.classList.contains('show-all-items')) {
+                                listHideItems.forEach(i => {
+                                    i.classList.add('hidden');
+                                })
+                                btnMore.classList.remove('filter__btn-more--open');
+                                row.classList.remove('show-all-items');
+                            } else {
+                                listHideItems.forEach(i => {
+                                    i.classList.remove('hidden');
+                                })
+                                btnMore.classList.add('filter__btn-more--open');
+                                row.classList.add('show-all-items');
+                            }
+                        })
+                    }
+                }
+            })
+        }
+
+        let buttonsOpenFilter = document.querySelectorAll('[data-action="open-filter"]');
+        if (buttonsOpenFilter.length) {
+            buttonsOpenFilter.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.classList.add('filter--open');
+                    document.body.classList.add('overflow-hidden');
+                })
+            })
+        }
+        let buttonsCloseFilter = document.querySelectorAll('[data-action="close-filter"]');
+        if (buttonsCloseFilter.length) {
+            buttonsCloseFilter.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.classList.remove('filter--open');
+                    document.body.classList.remove('overflow-hidden');
+                })
+            })
+        }
+
+    }
+}
+
+class Filter {
+    constructor(container, id, options = {}) {
+        this.container = container;
+        this.inputsCheckbox = Array.from(this.container.querySelectorAll('input[type="checkbox"]'));
+        this.id = id;
+        this.options = options;
+
+        this.init();
+    }
+
+    init() {
+        this.container.setAttribute('data-filter-id', this.id);
+
+        if (this.inputsCheckbox.length) {
+            this.inputsCheckbox.forEach((input, index) => {
+                input.setAttribute('data-filter-id', this.id);
+                input.setAttribute('data-filter-input-id', index);
+
+                let text = input.parentElement.querySelector('.checkbox-radio__text').innerText;
+
+                if (input.checked) {
+                    this.addSelectedButtons(this.id, index, text, input);
+
+                    if(this.options.on?.afterChange) {
+                        this.options.on?.afterChange(input);
+                    }
+                }
+
+                input.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        this.addSelectedButtons(this.id, index, text, input);
+                    } else {
+                        this.removeSelectedButtons(this.id, index);
+                    }
+
+                    if(this.options.on?.afterChange) {
+                        this.options.on?.afterChange(input);
+                    }
+                })
+            })
+        }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.selected-filter-btn__close')) {
+
+                let parent = e.target.parentElement;
+                if(parent.getAttribute('data-filter-id')) {
+                    this.removeSelectedButtons(parent.getAttribute('data-filter-id'), parent.getAttribute('data-filter-btn-id'));
+                    this.unCheckInput(parent.getAttribute('data-filter-btn-id'));
+
+                    if(this.options.on?.afterChange) {
+                        let input = this.inputsCheckbox.filter(input => input.getAttribute('data-filter-input-id') === parent.getAttribute('data-filter-btn-id'));
+                        this.options.on?.afterChange(input[0]);
+                    }
+                }
+
+            }
+
+        })
+
+
+        if (this.options.clearAllBtn) {
+            this.options.clearAllBtn.setAttribute('style', "display:none;");
+
+            this.options.clearAllBtn.addEventListener('click', () => this.clearAll());
+
+            if (this.options.duplicateSelectedButtons) {
+                let observer = new MutationObserver(mutationRecords => {
+                    if(this.options.duplicateSelectedButtons.children.length) {
+                        this.options.clearAllBtn.removeAttribute('style');
+                    } else {
+                        this.options.clearAllBtn.setAttribute('style', "display:none;");
+                    }
+                });
+
+                observer.observe(this.options.duplicateSelectedButtons, {
+                    childList: true,
+                });
+            }
+
+        }
+    }
+
+    addSelectedButtons(selectId, btnId, btnText, input) {
+
+
+
+        const addButton = (container) => {
+            let el = container.querySelector(`[data-input-name="${input.name}"][data-input-value="${input.value}"]`);
+            if(el) return;
+
+            container.insertAdjacentHTML('beforeend', `
+            <button class="selected-filter-btn" data-filter-id="${selectId}" data-filter-btn-id="${btnId}" data-input-name="${input.name}" data-input-value="${input.value}">
+                <span class="selected-filter-btn__close"></span>
+                ${btnText}
+            </button>
+            `)
+        }
+
+        if (this.options.duplicateSelectedButtons) {
+            addButton(this.options.duplicateSelectedButtons);
+        }
+    }
+
+    removeSelectedButtons(selectId, btnId) {
+        let buttons = document.querySelectorAll(`.selected-filter-btn[data-filter-id="${selectId}"][data-filter-btn-id="${btnId}"]`);
+        if (buttons.length) {
+            buttons.forEach(btn => {
+                btn.remove();
+            })
+        }
+    }
+
+    clearAll() {
+
+        this.inputsCheckbox.forEach(input => {
+            input.checked = false;
+        })
+
+        if (this.options.duplicateSelectedButtons) {
+            let buttons = document.querySelectorAll(`.selected-filter-btn[data-filter-id="${this.id}"]`);
+            if (buttons.length) {
+                buttons.forEach(btn => {
+                    btn.remove();
+                })
+            }
+        }
+    }
+
+    unCheckInput(inputId) {
+        this.inputsCheckbox.forEach(input => {
+            if (input.getAttribute('data-filter-input-id') === inputId) {
+                input.checked = false;
+            }
+        })
+    }
+
+    setInputStateByName(name, value, state) {
+        if(!name) return;
+        
+        this.inputsCheckbox.forEach(input => {
+            if(input.name === name && input.value === value) {
+                input.checked = state;
+
+                if(!state) {
+                    this.removeSelectedButtons(this.id, input.getAttribute('data-filter-input-id'));
+                }
+            }
+        })
+    }
 }
 		{
+    let multipleSelectsObjects = [];
+    let filter = null;
+    
     let multipleSelects = document.querySelectorAll('[data-multiple-select]');
     if(multipleSelects.length) {
         let btnClearSelectedFilters = document.querySelector('[data-clear-selected-filters]');
@@ -1251,7 +1546,43 @@ window.popup = {
             let multipleSelect = new MultipleSelect(select, index, {
                 duplicateSelectedButtons: selectedFilterList,
                 clearAllBtn: btnClearSelectedFilters,
+                on: {
+                    afterChange: (input) => {
+                        if(input.name?.trim()) {
+                            if(filter) {
+                                filter.setInputStateByName(input.name?.trim(), input.value, input.checked);
+                            }
+                        }
+                    }
+                }
             })
+
+            multipleSelectsObjects.push(multipleSelect);
+        })
+    }
+
+    let filterContainer = document.querySelector('[data-filter]');
+    if(filterContainer) {
+        let btnClearSelectedFilters = document.querySelector('[data-clear-selected-filters]');
+        let selectedFilterList = document.querySelector('.hero-filter__selected-filters-list');
+        filter = new Filter(filterContainer, 4, {
+            duplicateSelectedButtons: selectedFilterList,
+            clearAllBtn: btnClearSelectedFilters,
+            on: {
+                afterChange: (input) => {
+                    if(input.name?.trim()) {
+                        if(multipleSelectsObjects.length) {
+                            multipleSelectsObjects.forEach(multipleSelect => {
+                                multipleSelect.setInputStateByName(input.name?.trim(), input.value, input.checked);
+                            })
+                        }
+                    }
+                }
+            }
+        });
+
+        multipleSelectsObjects.forEach(multipleSelect => {
+            multipleSelect.update();
         })
     }
 }
@@ -1287,59 +1618,6 @@ window.popup = {
     }
 }
 		{
-    let filterContainer = document.querySelector('[data-filter]');
-    if(filterContainer) {
-        let rows = filterContainer.querySelectorAll('.filter__row');
-        if(rows.length) {
-            rows.forEach(row => {
-                let listHideItems = row.querySelectorAll('.filter__list li.hidden');
-                let btnMore = row.querySelector('.filter__btn-more');
-
-                if(listHideItems.length) {
-                    if(btnMore) {
-                        btnMore.classList.remove('hidden');
-
-                        btnMore.addEventListener('click', () => {
-                            if(row.classList.contains('show-all-items')) {
-                                listHideItems.forEach(i => {
-                                    i.classList.add('hidden');
-                                })
-                                btnMore.classList.remove('filter__btn-more--open');
-                                row.classList.remove('show-all-items');
-                            } else {
-                                listHideItems.forEach(i => {
-                                    i.classList.remove('hidden');
-                                })
-                                btnMore.classList.add('filter__btn-more--open');
-                                row.classList.add('show-all-items');
-                            }
-                        })
-                    }
-                }
-            })
-        }
-
-        let buttonsOpenFilter = document.querySelectorAll('[data-action="open-filter"]');
-        if(buttonsOpenFilter.length) {
-            buttonsOpenFilter.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterContainer.classList.add('filter--open');
-                    document.body.classList.add('overflow-hidden');
-                })
-            })
-        }
-        let buttonsCloseFilter = document.querySelectorAll('[data-action="close-filter"]');
-        if(buttonsCloseFilter.length) {
-            buttonsCloseFilter.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterContainer.classList.remove('filter--open');
-                    document.body.classList.remove('overflow-hidden');
-                })
-            })
-        }
-    }
-}
-		{
     let vacancySingleHeroContainer = document.querySelector('[data-vacancy-single-hero]');
     if(vacancySingleHeroContainer) {
         let img = vacancySingleHeroContainer.querySelector('.vacancy-single-hero__img');
@@ -1355,12 +1633,25 @@ window.popup = {
     }
 }
 		{
-    let loadingBoxElements = document.querySelectorAll('[data-loading-box]');
+    let loadingBoxElements = document.querySelectorAll('[data-loading-box], .gfield.form__load');
     if(loadingBoxElements.length) {
         loadingBoxElements.forEach(loadingBox => {
             let files = []
             let input = loadingBox.querySelector('input');
             let namesContainer = loadingBox.querySelector('.loading-box__names');
+
+
+
+            if(!namesContainer) {
+                namesContainer = document.createElement('div');
+                namesContainer.className = 'loading-box__names';
+
+                let container = loadingBox.querySelector('.ginput_container');
+                if(container) {
+                    container.append(namesContainer);
+                }
+            }
+
             if(input) {
                 const changeHandler = (event) => {
                     if (!event.target.files.length) {

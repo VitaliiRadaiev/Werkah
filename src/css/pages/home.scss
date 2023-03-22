@@ -1,7 +1,5 @@
 .promo-header {
-
     &__bg {
-
     }
 
     &__bg-decor {
@@ -35,7 +33,6 @@
 }
 
 .advantages {
-
     &__title {
     }
 
@@ -72,7 +69,6 @@
 }
 
 .cta {
-
     &__bg {
     }
 
@@ -87,10 +83,143 @@
         opacity: 0.33;
     }
 
-    &__body {
+    &__body { 
+
+        @media (max-width: $md3+px) {
+            min-height: auto;
+        }
+    }
+
+    &__title {
+        @media (min-width: 768px) {
+            text-align: left;
+        }
     }
 
     &__form {
+        width: 100%;
+
+        & .gform_body {
+            & .gform_fields {
+                display: flex !important;
+                flex-wrap: wrap;
+                gap: 2rem !important;
+            }
+
+            & .gfield {
+                flex: 0 1 100%;
+                & input[type="text"],
+                input[type="email"],
+                input[type="tel"],
+                input[type="password"] {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    background-color: #fff;
+                    border-radius: 0.5rem;
+                    padding: 1rem 2.5rem;
+                    font-weight: bold;
+                    color: $themeColorThird;
+                    height: 6.2rem;
+
+                    &::placeholder {
+                        color: rgba($themeColorThird, 0.47);
+                    }
+
+                    &:focus-visible {
+                        outline-color: rgba(#00a1e2, 0.14);
+                        outline-offset: 0.2rem;
+                        outline-width: 0.2rem;
+                    }
+                }
+
+                & textarea {
+                    display: flex;
+                    width: 100% !important;
+                    align-items: center;
+                    background-color: #fff;
+                    border-radius: 0.5rem;
+                    padding: 2rem 2.5rem;
+                    font-weight: bold;
+                    color: $themeColorThird;
+                    height: 14.3rem !important;
+                    resize: none;
+
+                    &::placeholder {
+                        color: rgba($themeColorThird, 0.47);
+                    }
+
+                    &:focus-visible {
+                        outline-color: rgba(#00a1e2, 0.14);
+                        outline-offset: 0.2rem;
+                        outline-width: 0.2rem;
+                    }
+                }
+
+                & .name_first {
+                    padding: 0 !important;
+                    margin: 0 !important;
+
+                    & label {
+                        display: none !important;
+                    }
+                }
+
+                & .gfield_validation_message {
+                    padding: 0;
+                    background: transparent;
+                    border: none;
+                    font-size: 1.7rem;
+                }
+            }
+
+            & .gfield_label {
+                display: block !important;
+                margin-bottom: 0.4rem !important;
+                font-weight: 400 !important;
+                font-size: 1.7rem !important;
+                line-height: 2.1rem !important;
+
+                & .gfield_required {
+                    display: none;
+                }
+            }
+
+            & .gform_confirmation_message {
+                text-align: center !important;
+                font-size: 2.4rem !important;
+                line-height: 1.2em !important;
+            }
+        }
+
+        & .gform_footer {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+
+            @media (min-width: 768px) {
+                text-align: right;
+            }
+
+            & .gform_button {
+                display: inline-flex;
+                min-height: 5.3rem;
+                align-items: center;
+                padding: 1rem 2.5rem;
+                gap: 0.7rem;
+                font-size: 1.7rem;
+                line-height: 2.1rem;
+                color: $textColorLight;
+                background-color: $themeColorThird;
+                border-radius: 0.4rem;
+                text-align: center;
+                justify-content: center;
+                transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
     }
 }
-

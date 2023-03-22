@@ -1,0 +1,35 @@
+.promo-header {
+    height: auto !important;
+    padding-bottom: 0 !important;
+
+    &__bg-decor {
+        & img {
+            object-position: bottom right !important;
+
+            @media (max-width: $md3+px) {
+                object-position: bottom center !important;
+                width: 120%;
+            }
+        }
+    } 
+
+    &__bg-img {
+        & img {
+            object-position: top;
+        }
+    }
+
+    &__body-wrap {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__body {
+        padding-bottom: 16rem !important;
+        min-height: 56rem;
+        @media (min-width: 768px) {
+            min-height: 70rem;
+            padding-top: 4rem;
+        }
+    }
+}

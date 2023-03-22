@@ -1,5 +1,6 @@
 html {
 	font-size: 7px;
+	height: 100%;
 	// min-width: $minwidth;
 
 	@media (min-width: 768px) {
@@ -14,13 +15,13 @@ html {
 		font-size: 10px;
 	}
 
-	@media (min-width: 1921px) {
-		font-size: 12px;
-	}
+	// @media (min-width: 1921px) {
+	// 	font-size: 12px;
+	// }
 
-	@media (min-width: 2561px) {
-		font-size: 14px;
-	}
+	// @media (min-width: 2561px) {
+	// 	font-size: 14px;
+	// }
 }
 
 body {
@@ -37,8 +38,10 @@ body {
 	transition: opacity 0.8s ease;
 	position: relative;
 	min-height: 100%;
-	background-color: #f0fafc;
+	background-color: #fff;
 	letter-spacing: 0.02em;
+	display: flex;
+	flex-direction: column;
 
 	&::-webkit-scrollbar {
 		width: 8px;
@@ -56,6 +59,22 @@ body {
 		border-radius: 10px;
 		box-shadow: inset 0px 0px 0px 0px #fff;
 	}
+
+	&.admin-bar {
+		& .header, & .mobile-menu {
+			top: 32px;
+			@media (max-width: 782px) {
+				top: 46px;
+			}
+		}
+	}
+
+	& #wpadminbar {
+		position: fixed !important;
+	}
+}
+._page {
+	flex: 1 1 auto;
 }
 
 h1,
@@ -113,7 +132,6 @@ h6,
 	line-height: 1.26em;
 }
 
-
 .ibg {
 	& img {
 		position: absolute;
@@ -133,25 +151,25 @@ h6,
 	max-width: calc(118.5rem + 40px);
 	width: 100%;
 	padding-right: 20px;
-    padding-left: 20px;
+	padding-left: 20px;
 	margin-right: auto;
-    margin-left: auto;
+	margin-left: auto;
 }
 .container-third {
 	max-width: calc(109.4rem + 40px);
 	width: 100%;
 	padding-right: 20px;
-    padding-left: 20px;
+	padding-left: 20px;
 	margin-right: auto;
-    margin-left: auto;
+	margin-left: auto;
 }
 .container-forth {
 	max-width: calc(98rem + 40px);
 	width: 100%;
 	padding-right: 20px;
-    padding-left: 20px;
+	padding-left: 20px;
 	margin-right: auto;
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .last {
@@ -170,7 +188,8 @@ h6,
 		flex: 0 0 auto;
 	}
 
-	& img, svg {
+	& img,
+	svg {
 		width: 2.4rem;
 		height: auto;
 	}
@@ -179,7 +198,7 @@ h6,
 [data-tooltip] {
 	padding-right: 1.6rem;
 	position: relative;
-	
+
 	& .tooltip-icon {
 		position: absolute;
 		width: 1.1rem;

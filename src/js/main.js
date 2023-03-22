@@ -274,10 +274,11 @@ class App {
 
 
 	componentsBeforeLoad() {
+		@@include('../components/promo-header/promo-header.js')
 		@@include('../components/multiple-select/multiple-select.js')
+		@@include('../components/filter/filter.js')
 		@@include('../components/hero-filter/hero-filter.js')
 		@@include('../components/footer/footer.js')
-		@@include('../components/filter/filter.js')
 		@@include('../components/vacancy-single-hero/vacancy-single-hero.js')
 		@@include('../components/loading-box/loading-box.js')
 		@@include('../components/hero-second/hero-second.js')

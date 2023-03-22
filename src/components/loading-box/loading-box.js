@@ -1,10 +1,23 @@
 {
-    let loadingBoxElements = document.querySelectorAll('[data-loading-box]');
+    let loadingBoxElements = document.querySelectorAll('[data-loading-box], .gfield.form__load');
     if(loadingBoxElements.length) {
         loadingBoxElements.forEach(loadingBox => {
             let files = []
             let input = loadingBox.querySelector('input');
             let namesContainer = loadingBox.querySelector('.loading-box__names');
+
+
+
+            if(!namesContainer) {
+                namesContainer = document.createElement('div');
+                namesContainer.className = 'loading-box__names';
+
+                let container = loadingBox.querySelector('.ginput_container');
+                if(container) {
+                    container.append(namesContainer);
+                }
+            }
+
             if(input) {
                 const changeHandler = (event) => {
                     if (!event.target.files.length) {

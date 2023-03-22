@@ -31,6 +31,8 @@
     }
 
     &__body {
+        display: flex;
+        flex-direction: column;
     }
 
     &__title {
@@ -43,6 +45,7 @@
     }
 
     &__bottom {
+        margin-top: auto;
     }
 
     &__options {
@@ -68,5 +71,9 @@
     }
 
     &__link {
+        &.btn-default {
+            white-space: nowrap;
+            align-self: flex-end;
+        }
     }
 }

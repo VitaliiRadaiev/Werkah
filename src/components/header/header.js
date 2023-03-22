@@ -1,7 +1,7 @@
 
 let mobileMenu = document.querySelector('[data-mobile-menu]'); 
 if (mobileMenu) {
-    let menuItemHasChildren = mobileMenu.querySelectorAll('.mobile-menu__nav .menu-item-has-children');
+    let menuItemHasChildren = mobileMenu.querySelectorAll('.mobile-menu__nav > li.menu-item-has-children');
     if (menuItemHasChildren.length) {
         menuItemHasChildren.forEach(item => {
             let subMenu = item.querySelector('.sub-menu');
